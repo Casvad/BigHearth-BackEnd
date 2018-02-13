@@ -7,11 +7,11 @@
 
   cat > ~/.netrc << EOF
   machine api.heroku.com
-    login $HEROKU_LOGIN
-    password $HEROKU_API_KEY
+    login login
+    password api
   machine git.heroku.com
-    login $HEROKU_LOGIN
-    password $HEROKU_API_KEY
+    login login
+    password api
   EOF
 
   # Add heroku.com to the list of known hosts
