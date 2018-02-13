@@ -41,13 +41,9 @@ jobs:
       # run tests!
       - run: gradle test
 
-      - run: bash .circleci/setup-heroku.sh
-      - add_ssh_keys:
-          fingerprints:
-            - "3a:4a:0f:a9:cd:64:b8:08:ec:88:18:b6:25:f2:48:5f"
-      - deploy:
-          name: Deploy Master to Heroku
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              git push https://git.heroku.com/bighearth.git master
-            fi
+deployment:
+  staging:
+    branch: master
+
+    heroku:
+      appname: bighearth
