@@ -1,4 +1,4 @@
-package escuelaing.edu.co.BigHearth;
+package is.escuelaing.edu.co.BigHearth;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
