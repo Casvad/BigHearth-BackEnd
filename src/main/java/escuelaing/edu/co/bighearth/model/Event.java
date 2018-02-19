@@ -5,18 +5,19 @@ import java.sql.Date;
 
 public class Event {
     private int id, numberOfVolunteers;
-    private String name, type, description;
+    private EventType eventType;
+    private String name, description;
     private Date eventDate;
     private Blob image;
 
     public Event() {
     }
 
-    public Event(int id, int numberOfVolunteers, String name, String type, String description, Date eventDate, Blob image) {
+    public Event(int id, int numberOfVolunteers, String name, EventType eventType, String description, Date eventDate, Blob image) {
         this.id = id;
         this.numberOfVolunteers = numberOfVolunteers;
         this.name = name;
-        this.type = type;
+        this.eventType = eventType;
         this.description = description;
         this.eventDate = eventDate;
         this.image = image;
@@ -46,12 +47,12 @@ public class Event {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
+    public EventType getType() {
+        return eventType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setType(EventType eventType) {
+        this.eventType = eventType;
     }
 
     public String getDescription() {

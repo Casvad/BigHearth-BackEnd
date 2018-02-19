@@ -7,7 +7,7 @@ public class User{
 
 
     private String mail="", state="", city="", address="",username="", password="", description="";
-    private Set<String> interest=new HashSet<String>();
+    private Set<EventType> interest=new HashSet<>();
     private int volunteersMade=-1;
 
 
@@ -15,7 +15,7 @@ public class User{
 
     }
 
-    public User(String username,String password,String mail, String state, String city, String address, String description, Set<String> interest, int volunteersMade) {
+    public User(String username,String password,String mail, String state, String city, String address, String description, Set<EventType> interest, int volunteersMade) {
         this.mail = mail;
         this.state = state;
         this.city = city;
@@ -84,11 +84,11 @@ public class User{
         this.description = description;
     }
 
-    public Set<String> getInterest() {
+    public Set<EventType> getInterest() {
         return interest;
     }
 
-    public void setInterest(Set<String> interest) {
+    public void setInterest(Set<EventType> interest) {
         this.interest = interest;
     }
 
@@ -100,7 +100,27 @@ public class User{
         this.volunteersMade = volunteersMade;
     }
 
+    public boolean confirmUserEmail(String email) { return this.mail.equals(email); }
 
+    public void modifyUserInterest(Set<EventType> newInterests){
+        for (EventType event: interest) {
+            if(!newInterests.contains(event)){
+                interest.remove(event);
+            }
+        }
+        for(EventType event : newInterests) {
+            if (!interest.contains(event)) {
+                interest.add(event);
+            }
+        }
+    }
+
+    public boolean equals (User us){
+        if (this==us) return true;
+        if (this == null) return false;
+        if (this.getClass() != us.getClass()) return false;
+        return this.mail.equals(us.getMail());
+    }
 
     @Override
     public String toString()
