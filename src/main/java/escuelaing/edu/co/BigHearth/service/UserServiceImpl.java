@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService{
     @PostConstruct
     private void populateSampleData()
     {
-        users.add( new User( "martinjhm271", "123","","","","","",new HashSet<String>(),"") );
+        users.add( new User( "martinjhm271", "123","","","","","",new HashSet<String>(),0) );
     }
 
 
