@@ -7,7 +7,7 @@ public class User{
 
 
     private String mail="", state="", city="", address="",username="", password="", description="";
-    private Set<String> interest=new ArrayList<>();
+    private Set<String> interest=new HashSet<String>();
     private int volunteersMade=-1;
 
 

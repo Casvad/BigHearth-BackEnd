@@ -5,8 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 
 @Service
@@ -23,7 +22,7 @@ public class UserServiceImpl implements UserService{
     @PostConstruct
     private void populateSampleData()
     {
-        users.add( new User( "martinjhm271", "123","","","","","",new ArrayList<String>(),"") );
+        users.add( new User( "martinjhm271", "123","","","","","",new HashSet<String>(),"") );
     }
 
 
