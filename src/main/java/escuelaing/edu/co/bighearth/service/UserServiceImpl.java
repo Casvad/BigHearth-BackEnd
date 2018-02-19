@@ -1,6 +1,6 @@
-package escuelaing.edu.co.BigHearth.service;
+package escuelaing.edu.co.bighearth.service;
 
-import escuelaing.edu.co.BigHearth.model.User;
+import escuelaing.edu.co.bighearth.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

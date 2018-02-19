@@ -1,6 +1,6 @@
-package escuelaing.edu.co.BigHearth.model;
+package escuelaing.edu.co.bighearth.model;
 
-import escuelaing.edu.co.BigHearth.model.User;
+import escuelaing.edu.co.bighearth.model.User;
 
 import java.sql.Date;
 

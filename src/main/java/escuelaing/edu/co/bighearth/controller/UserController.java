@@ -1,8 +1,8 @@
-package escuelaing.edu.co.BigHearth.controller;
+package escuelaing.edu.co.bighearth.controller;
 
 
-import escuelaing.edu.co.BigHearth.model.User;
-import escuelaing.edu.co.BigHearth.service.UserService;
+import escuelaing.edu.co.bighearth.model.User;
+import escuelaing.edu.co.bighearth.service.UserService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class UserController
         throws ServletException
     {
 
-        String jwtToken = "";
+         String jwtToken = "";
 
         if ( login.getUsername() == null || login.getPassword() == null )
         {
@@ -62,7 +62,7 @@ public class UserController
     public class Token
     {
 
-        String access_token;
+        private String access_token;
 
 
         public Token( String access_token )

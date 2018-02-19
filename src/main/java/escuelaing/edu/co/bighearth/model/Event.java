@@ -1,4 +1,4 @@
-package escuelaing.edu.co.BigHearth.model;
+package escuelaing.edu.co.bighearth.model;
 
 import java.sql.Blob;
 import java.sql.Date;

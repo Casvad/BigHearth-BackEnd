@@ -1,7 +1,7 @@
 
 
 
-package escuelaing.edu.co.BigHearth.config;
+package escuelaing.edu.co.bighearth.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

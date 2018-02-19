@@ -1,6 +1,6 @@
-package escuelaing.edu.co.BigHearth;
+package escuelaing.edu.co.bighearth;
 
-import escuelaing.edu.co.BigHearth.config.JwtFilter;
+import escuelaing.edu.co.bighearth.config.JwtFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;

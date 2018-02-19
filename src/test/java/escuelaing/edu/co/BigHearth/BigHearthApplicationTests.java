@@ -1,4 +1,4 @@
-package escuelaing.edu.co.BigHearth;
+package escuelaing.edu.co.bighearth;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
