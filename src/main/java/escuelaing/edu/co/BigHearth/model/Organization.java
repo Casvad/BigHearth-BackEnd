@@ -1,6 +1,6 @@
 package escuelaing.edu.co.BigHearth.model;
 
-import is.escuelaing.edu.co.BigHearth.model.User;
+import escuelaing.edu.co.BigHearth.model.User;
 
 public class Organization extends User{
     private String commercialName, businessName;
