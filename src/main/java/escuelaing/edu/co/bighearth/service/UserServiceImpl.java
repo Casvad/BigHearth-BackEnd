@@ -1,12 +1,12 @@
 package escuelaing.edu.co.bighearth.service;
 
 import escuelaing.edu.co.bighearth.model.EventType;
+import escuelaing.edu.co.bighearth.model.Organization;
 import escuelaing.edu.co.bighearth.model.User;
 import escuelaing.edu.co.bighearth.model.Volunteer;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.sql.Date;
 import java.util.*;
 
 
@@ -14,28 +14,33 @@ import java.util.*;
 public class UserServiceImpl implements UserService{
 
     private List<User> users = new ArrayList<>();
-    private List<Volunteer> volunteers = new ArrayList<>();
 
 
     public UserServiceImpl()
     {
     }
 
-    private boolean consultExistingUsername(String username){
-        for(User us : users){
+    /**
+     * Search a specific user in global list
+     * @param username
+     * @return Return the user with the username 
+     */
+    private User searchUserName(String username){
+        for (User us : users) {
             if(us.getUsername().equals(username)){
-                return true;
+                return us;
             }
         }
-        return false;
+        return null;
     }
 
 
     @PostConstruct
     private void populateSampleData()
     {
-        users.add( new User( "martinjhm271", "123","","","","","",new HashSet<EventType>(),0) );
-        volunteers.add(new Volunteer("carlos.ramirez-ot", "asd123","carlos.ramirez-ot@mail.escuelaing.edu.co","Cundinamarca","Bogota","","",new HashSet<EventType>(),0,"","","", (Date) new java.util.Date(),1));
+        users.add(new User( "martinjhm271", "123","","","","","",new HashSet<EventType>(),0));
+        users.add(new Volunteer("carlos.ramirez-ot", "asd123","carlos.ramirez-ot@mail.escuelaing.edu.co","Cundinamarca","Bogota","","",new HashSet<EventType>(),0,"","","", new java.util.Date(),1));
+        users.add(new Organization("microsoft2997", "qwerty123" , "microsoft@hotmail.com","California","Sillicon Valley","","",new HashSet<EventType>(),0,"Microsoft-Inc","Microsoft eu",1234));
     }
 
 
@@ -47,37 +52,46 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User getUser( String username ) {
-        User u=new User();
-        for(int i=0;i<users.size();i++){
-            if(users.get(i).getUsername().equals(username)){
-                return users.get(i);
+        for(User us : users){
+            if(us.getUsername().equals(username)){
+                return us;
             }
         }
-        return u;
+        return null;
     }
 
-    /*
-    *  Se modifican los datos de usuario si el correo como llave principal está dentro de los usuarios ya registrados
-    * */
+    /**
+    *   Modify the user profile depend of the kind of user
+    *   @param User
+    *   @return user with the new profile values
+    */
     @Override
-    public Volunteer editConfigVolunteer(String mail, String state, String city, String address, String password, String description, Set<EventType> interest, String name, String lastname, Date bornDate) {
-        synchronized (volunteers){
-            for (Volunteer volunteer: volunteers) {
-                //Usuario encontrado
-                if(volunteer.confirmUserEmail(mail)){
-                    volunteer.setAddress(address);
-                    volunteer.setState(state);
-                    volunteer.setCity(city);
-                    volunteer.setPassword(password);
-                    volunteer.setDescription(description);
-                    volunteer.modifyUserInterest(interest);
-                    volunteer.setName(name);
-                    volunteer.setLastname(lastname);
-                    volunteer.setBornDate(bornDate);
-                    return volunteer;
+    public User editConfigUser(User modUser) throws ServicesException {
+        synchronized (users){
+            User findUser = searchUserName(modUser.getUsername());
+            if( findUser == null){
+                throw new ServicesException("No se encuentra el usuario para modificar su perfil");
+            }else{
+                findUser.setAddress(modUser.getAddress());
+                findUser.setState(modUser.getState());
+                findUser.setCity(modUser.getCity());
+                findUser.setPassword(modUser.getPassword());
+                findUser.setDescription(modUser.getDescription());
+                if(findUser instanceof Volunteer){
+                    ((Volunteer)findUser).setName(((Volunteer)modUser).getName());
+                    ((Volunteer)findUser).setLastname(((Volunteer)modUser).getLastname());
+                    ((Volunteer)findUser).setBornDate(((Volunteer)modUser).getBornDate());
+                    
+                }else if(findUser instanceof Organization){
+                    ((Organization)findUser).setBusinessName(((Organization)modUser).getBusinessName());
+                    ((Organization)findUser).setCommercialName(((Organization)modUser).getCommercialName());
+                    ((Organization)findUser).setNIT(((Organization)modUser).getNIT());
                 }
+                findUser.modifyUserInterest(modUser.getInterest());
+                
             }
-            return null;
+            
+            return findUser;
         }
 
 

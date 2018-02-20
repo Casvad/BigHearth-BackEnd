@@ -2,7 +2,7 @@ package escuelaing.edu.co.bighearth.model;
 
 import escuelaing.edu.co.bighearth.model.User;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Set;
 
 public class Volunteer extends User{

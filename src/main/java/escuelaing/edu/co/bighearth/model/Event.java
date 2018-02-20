@@ -1,7 +1,7 @@
 package escuelaing.edu.co.bighearth.model;
 
 import java.sql.Blob;
-import java.sql.Date;
+import java.util.Date;
 
 public class Event {
     private int id, numberOfVolunteers;
