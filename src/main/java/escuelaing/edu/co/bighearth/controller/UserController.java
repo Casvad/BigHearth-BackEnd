@@ -1,6 +1,7 @@
 package escuelaing.edu.co.bighearth.controller;
 
 
+import escuelaing.edu.co.bighearth.model.Organization;
 import escuelaing.edu.co.bighearth.model.User;
 import escuelaing.edu.co.bighearth.model.Volunteer;
 import escuelaing.edu.co.bighearth.service.ServicesException;
@@ -67,8 +68,17 @@ public class UserController
         return userService.getUsers();
     }
 
-    @RequestMapping( value = "/modifyProfile", method = RequestMethod.PUT)
-    public User modifyProfileUser(@RequestBody User modUser){
+    @RequestMapping( value = "/modifyProfileVol", method = RequestMethod.PUT)
+    public User modifyProfileVolunteer(@RequestBody Volunteer modUser){
+        try{
+            return userService.editConfigUser(modUser);
+        }catch(ServicesException servException){
+            return null;
+        }
+    }
+
+    @RequestMapping( value = "/modifyProfileOrg", method = RequestMethod.PUT)
+    public User modifyProfileOrganization(@RequestBody Organization modUser){
         try{
             return userService.editConfigUser(modUser);
         }catch(ServicesException servException){
