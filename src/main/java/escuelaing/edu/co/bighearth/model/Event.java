@@ -1,18 +1,23 @@
 package escuelaing.edu.co.bighearth.model;
 
 import java.sql.Blob;
-import java.sql.Date;
+import java.util.Date;
+import java.util.ArrayList;
+import escuelaing.edu.co.bighearth.model.User;
 
 public class Event {
     private int id, numberOfVolunteers;
     private String name, type, description;
     private Date eventDate;
     private Blob image;
+    private ArrayList<User> volunteers;
 
-    public Event() {
+
+    public Event(){
+
     }
 
-    public Event(int id, int numberOfVolunteers, String name, String type, String description, Date eventDate, Blob image) {
+    public Event(int id, int numberOfVolunteers, String name, String type, String description, Date eventDate, Blob image,ArrayList<User> volunteers) {
         this.id = id;
         this.numberOfVolunteers = numberOfVolunteers;
         this.name = name;
@@ -20,6 +25,7 @@ public class Event {
         this.description = description;
         this.eventDate = eventDate;
         this.image = image;
+        this.volunteers = volunteers;
     }
 
     public int getId() {
@@ -74,7 +80,13 @@ public class Event {
         return image;
     }
 
-    public void setImage(Blob image) {
-        this.image = image;
+    public void  setImage(Blob image) { this.image = image;}
+
+    public ArrayList<User> getVolunteers() {
+        return volunteers;
+    }
+
+    public void setVolunteers(ArrayList<User> volunteers) {
+        this.volunteers = volunteers;
     }
 }
