@@ -1,7 +1,10 @@
 package escuelaing.edu.co.bighearth.controller;
 
 
+import escuelaing.edu.co.bighearth.model.Organization;
 import escuelaing.edu.co.bighearth.model.User;
+import escuelaing.edu.co.bighearth.model.Volunteer;
+import escuelaing.edu.co.bighearth.service.ServicesException;
 import escuelaing.edu.co.bighearth.service.UserService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.ServletException;
 import java.util.Date;
+import java.util.List;
 
 
 @RestController
@@ -58,6 +62,30 @@ public class UserController
 
         return new Token( jwtToken );
     }
+
+    @RequestMapping( value = "/users", method = RequestMethod.GET)
+    public List<User> volunteers(){
+        return userService.getUsers();
+    }
+
+    @RequestMapping( value = "/modifyProfileVol", method = RequestMethod.PUT)
+    public User modifyProfileVolunteer(@RequestBody Volunteer modUser){
+        try{
+            return userService.editConfigUser(modUser);
+        }catch(ServicesException servException){
+            return null;
+        }
+    }
+
+    @RequestMapping( value = "/modifyProfileOrg", method = RequestMethod.PUT)
+    public User modifyProfileOrganization(@RequestBody Organization modUser){
+        try{
+            return userService.editConfigUser(modUser);
+        }catch(ServicesException servException){
+            return null;
+        }
+    }
+
 
     public class Token
     {
