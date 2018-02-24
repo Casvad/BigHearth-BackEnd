@@ -1,9 +1,7 @@
 package escuelaing.edu.co.bighearth.model;
 
-import escuelaing.edu.co.bighearth.model.User;
-
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 public class Volunteer extends User{
     private String name, lastname, gender;
@@ -13,7 +11,7 @@ public class Volunteer extends User{
     public Volunteer() {
     }
 
-    public Volunteer(String username, String password, String mail, String state, String city, String address, String description, Set<EventType> interest, int volunteersMade, String name, String lastname, String gender, Date bornDate, int hours) {
+    public Volunteer(String username, String password, String mail, String state, String city, String address, String description, List<String> interest, int volunteersMade, String name, String lastname, String gender, Date bornDate, int hours) {
         super(username, password, mail, state, city, address, description, interest, volunteersMade);
         this.name = name;
         this.lastname = lastname;

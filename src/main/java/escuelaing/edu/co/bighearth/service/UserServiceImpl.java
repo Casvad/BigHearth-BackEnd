@@ -1,6 +1,5 @@
 package escuelaing.edu.co.bighearth.service;
 
-import escuelaing.edu.co.bighearth.model.EventType;
 import escuelaing.edu.co.bighearth.model.Organization;
 import escuelaing.edu.co.bighearth.model.User;
 import escuelaing.edu.co.bighearth.model.Volunteer;
@@ -16,8 +15,7 @@ public class UserServiceImpl implements UserService{
     private List<User> users = new ArrayList<>();
 
 
-    public UserServiceImpl()
-    {
+    public UserServiceImpl() {
     }
 
     /**
@@ -38,9 +36,8 @@ public class UserServiceImpl implements UserService{
     @PostConstruct
     private void populateSampleData()
     {
-        users.add(new User( "martinjhm271", "123","","","","","",new HashSet<EventType>(),0));
-        users.add(new Volunteer("carlos.ramirez-ot", "asd123","carlos.ramirez-ot@mail.escuelaing.edu.co","Cundinamarca","Bogota","","",new HashSet<EventType>(),0,"","","", new java.util.Date(),1));
-        users.add(new Organization("microsoft2997", "qwerty123" , "microsoft@hotmail.com","California","Sillicon Valley","","",new HashSet<EventType>(),0,"Microsoft-Inc","Microsoft eu",1234));
+        users.add(new Volunteer("carlos.ramirez-ot", "asd123","carlos.ramirez-ot@mail.escuelaing.edu.co","Cundinamarca","Bogota","","",new ArrayList<String>(),0,"","","", new java.util.Date(),1));
+        users.add(new Organization("microsoft2997", "qwerty123" , "microsoft@hotmail.com","California","Sillicon Valley","","",new ArrayList<String>(),0,"Microsoft-Inc","Microsoft eu",1234));
     }
 
 
@@ -62,7 +59,7 @@ public class UserServiceImpl implements UserService{
 
     /**
     *   Modify the user profile depend of the kind of user
-    *   @param User
+    *   @param modUser Usuario para editar su configuración
     *   @return user with the new profile values
     */
     @Override
@@ -73,6 +70,7 @@ public class UserServiceImpl implements UserService{
                 throw new ServicesException("No se encuentra el usuario para modificar su perfil");
             }else{
                 findUser.setAddress(modUser.getAddress());
+                findUser.setMail(modUser.getMail());
                 findUser.setState(modUser.getState());
                 findUser.setCity(modUser.getCity());
                 findUser.setPassword(modUser.getPassword());
@@ -81,16 +79,15 @@ public class UserServiceImpl implements UserService{
                     ((Volunteer)findUser).setName(((Volunteer)modUser).getName());
                     ((Volunteer)findUser).setLastname(((Volunteer)modUser).getLastname());
                     ((Volunteer)findUser).setBornDate(((Volunteer)modUser).getBornDate());
-                    
+                    ((Volunteer)findUser).setGender(((Volunteer)modUser).getGender());
+                    ((Volunteer)findUser).setHours(((Volunteer)modUser).getHours());
                 }else if(findUser instanceof Organization){
                     ((Organization)findUser).setBusinessName(((Organization)modUser).getBusinessName());
                     ((Organization)findUser).setCommercialName(((Organization)modUser).getCommercialName());
                     ((Organization)findUser).setNIT(((Organization)modUser).getNIT());
                 }
                 findUser.modifyUserInterest(modUser.getInterest());
-                
             }
-            
             return findUser;
         }
 

@@ -7,7 +7,7 @@ public class User{
 
 
     private String mail="", state="", city="", address="",username="", password="", description="";
-    private Set<EventType> interest=new HashSet<>();
+    private List<String> interest = new ArrayList<>();
     private int volunteersMade=-1;
 
 
@@ -15,7 +15,7 @@ public class User{
 
     }
 
-    public User(String username,String password,String mail, String state, String city, String address, String description, Set<EventType> interest, int volunteersMade) {
+    public User(String username,String password,String mail, String state, String city, String address, String description, List<String> interest, int volunteersMade) {
         this.mail = mail;
         this.state = state;
         this.city = city;
@@ -84,11 +84,11 @@ public class User{
         this.description = description;
     }
 
-    public Set<EventType> getInterest() {
+    public List<String> getInterest() {
         return interest;
     }
 
-    public void setInterest(Set<EventType> interest) {
+    public void setInterest(List<String> interest) {
         this.interest = interest;
     }
 
@@ -102,13 +102,13 @@ public class User{
 
     public boolean confirmUserEmail(String email) { return this.mail.equals(email); }
 
-    public void modifyUserInterest(Set<EventType> newInterests){
-        for (EventType event: interest) {
+    public void modifyUserInterest(List<String> newInterests){
+        for (String event: interest) {
             if(!newInterests.contains(event)){
                 interest.remove(event);
             }
         }
-        for(EventType event : newInterests) {
+        for(String event : newInterests) {
             if (!interest.contains(event)) {
                 interest.add(event);
             }

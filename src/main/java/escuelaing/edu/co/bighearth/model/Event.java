@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Event {
     private int id, numberOfVolunteers;
-    private EventType eventType;
+    private String eventType;
     private String name, description;
     private Date eventDate;
     private Blob image;
@@ -13,7 +13,7 @@ public class Event {
     public Event() {
     }
 
-    public Event(int id, int numberOfVolunteers, String name, EventType eventType, String description, Date eventDate, Blob image) {
+    public Event(int id, int numberOfVolunteers, String name, String eventType, String description, Date eventDate, Blob image) {
         this.id = id;
         this.numberOfVolunteers = numberOfVolunteers;
         this.name = name;
@@ -47,11 +47,11 @@ public class Event {
         this.name = name;
     }
 
-    public EventType getType() {
+    public String getType() {
         return eventType;
     }
 
-    public void setType(EventType eventType) {
+    public void setType(String eventType) {
         this.eventType = eventType;
     }
 
