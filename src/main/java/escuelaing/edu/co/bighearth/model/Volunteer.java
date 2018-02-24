@@ -8,16 +8,18 @@ public class Volunteer extends User{
     private String name, lastname, gender;
     private Date bornDate;
     private int hours;
+    private int volunteersParticiped=-1;
 
     public Volunteer() {
     }
 
-    public Volunteer(String name, String lastname, String gender, Date bornDate, int hours) {
+    public Volunteer(String name, String lastname, String gender, Date bornDate, int hours, int volunteersParticiped) {
         this.name = name;
         this.lastname = lastname;
         this.gender = gender;
         this.bornDate = bornDate;
         this.hours = hours;
+        this.volunteersParticiped=volunteersParticiped;
     }
 
     public String getName() {
@@ -58,5 +60,13 @@ public class Volunteer extends User{
 
     public void setHours(int hours) {
         this.hours = hours;
+    }
+
+    public int getVolunteersParticiped() {
+        return volunteersParticiped;
+    }
+
+    public void setVolunteersParticiped(int volunteersParticiped) {
+        this.volunteersParticiped = volunteersParticiped;
     }
 }

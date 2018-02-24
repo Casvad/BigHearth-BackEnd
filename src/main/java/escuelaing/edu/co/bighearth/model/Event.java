@@ -4,22 +4,25 @@ import java.sql.Blob;
 import java.sql.Date;
 
 public class Event {
-    private int id, numberOfVolunteers;
+    private int id, numberOfVolunteers,maxVolunteers;
     private String name, type, description;
     private Date eventDate;
     private Blob image;
+    private List<Volunteer> volunteers=new ArrayList<Volunteer>();
 
     public Event() {
     }
 
-    public Event(int id, int numberOfVolunteers, String name, String type, String description, Date eventDate, Blob image) {
+    public Event(int id, int numberOfVolunteers,int maxVolunteers, String name, String type, String description, Date eventDate, Blob image,List<Volunteer> volunteers) {
         this.id = id;
         this.numberOfVolunteers = numberOfVolunteers;
+        this.maxVolunteers=maxVolunteers;
         this.name = name;
         this.type = type;
         this.description = description;
         this.eventDate = eventDate;
         this.image = image;
+        this.volunteers=volunteers;
     }
 
     public int getId() {
@@ -76,5 +79,21 @@ public class Event {
 
     public void setImage(Blob image) {
         this.image = image;
+    }
+
+    public int getMaxVolunteers() {
+        return maxVolunteers;
+    }
+
+    public void setMaxVolunteers(int maxVolunteers) {
+        this.maxVolunteers = maxVolunteers;
+    }
+
+    public List<Volunteer> getVolunteers() {
+        return volunteers;
+    }
+
+    public void setVolunteers(List<Volunteer> volunteers) {
+        this.volunteers = volunteers;
     }
 }

@@ -8,14 +8,14 @@ public class User{
 
     private String mail="", state="", city="", address="",username="", password="", description="";
     private Set<String> interest=new HashSet<String>();
-    private int volunteersMade=-1;
+
 
 
     public User(){
 
     }
 
-    public User(String username,String password,String mail, String state, String city, String address, String description, Set<String> interest, int volunteersMade) {
+    public User(String username,String password,String mail, String state, String city, String address, String description, Set<String> interest) {
         this.mail = mail;
         this.state = state;
         this.city = city;
@@ -24,7 +24,7 @@ public class User{
         this.password = password;
         this.description = description;
         this.interest = interest;
-        this.volunteersMade = volunteersMade;
+
     }
 
 
@@ -92,13 +92,6 @@ public class User{
         this.interest = interest;
     }
 
-    public int getVolunteersMade() {
-        return volunteersMade;
-    }
-
-    public void setVolunteersMade(int volunteersMade) {
-        this.volunteersMade = volunteersMade;
-    }
 
 
 
