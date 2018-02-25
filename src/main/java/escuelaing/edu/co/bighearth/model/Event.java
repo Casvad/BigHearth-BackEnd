@@ -5,21 +5,25 @@ import java.util.Date;
 import java.util.ArrayList;
 
 public class Event {
-    private int id, numberOfVolunteers;
+
+    private int id, numberOfVolunteers,maxVolunteers;
     private String eventType;
     private String name, description;
     private Date eventDate;
     private Blob image;
-    private ArrayList<Volunteer> volunteers;
+
+    private List<Volunteer> volunteers=new ArrayList<>();
 
 
     public Event(){
 
     }
 
-    public Event(int id, int numberOfVolunteers, String name, String type, String description, Date eventDate, Blob image, ArrayList<Volunteer> volunteers) {
+    public Event(int id, int numberOfVolunteers,int maxVolunteers, String name, String type, String description, Date eventDate, Blob image,List<Volunteer> volunteers) {
+
         this.id = id;
         this.numberOfVolunteers = numberOfVolunteers;
+        this.maxVolunteers=maxVolunteers;
         this.name = name;
         this.eventType = eventType;
         this.description = description;
@@ -82,18 +86,47 @@ public class Event {
 
     public void  setImage(Blob image) { this.image = image;}
 
-    public ArrayList<Volunteer> getVolunteers() {
+
+
+    public List<Volunteer> getVolunteers() {
         return volunteers;
     }
 
-    public void setVolunteers(ArrayList<Volunteer> volunteers) {
+    public void setVolunteers(List<Volunteer> volunteers) {
         this.volunteers = volunteers;
     }
+
+
+    public String getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
+    }
+
+
 
     //Fase beta
     public boolean addVolunteerEvent(Volunteer volunteerToRegister){
         this.volunteers.add(volunteerToRegister);
         volunteerToRegister.addEventList(this);
         return true;
+    }
+
+    public int getMaxVolunteers() {
+        return maxVolunteers;
+    }
+
+    public void setMaxVolunteers(int maxVolunteers) {
+        this.maxVolunteers = maxVolunteers;
+    }
+
+    public List<Volunteer> getVolunteers() {
+        return volunteers;
+    }
+
+    public void setVolunteers(List<Volunteer> volunteers) {
+        this.volunteers = volunteers;
     }
 }

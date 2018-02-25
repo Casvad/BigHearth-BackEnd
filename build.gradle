@@ -32,4 +32,5 @@ dependencies {
 	compile('io.jsonwebtoken:jjwt:0.9.0')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile(group: 'org.apache.shiro', name: 'shiro-all', version: '1.2.3')
 }

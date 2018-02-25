@@ -5,6 +5,7 @@ import java.util.List;
 public class Organization extends User {
     private String commercialName, businessName;
     private int NIT;
+    private int volunteersMade=-1;
 
     public Organization() {
     }
@@ -16,11 +17,6 @@ public class Organization extends User {
         this.NIT = NIT;
     }
 
-    public Organization(String commercialName, String businessName, int NIT) {
-        this.commercialName = commercialName;
-        this.businessName = businessName;
-        this.NIT = NIT;
-    }
 
     public String getCommercialName() {
         return commercialName;
@@ -44,5 +40,13 @@ public class Organization extends User {
 
     public void setNIT(int NIT) {
         this.NIT = NIT;
+    }
+
+    public int getVolunteersMade() {
+        return volunteersMade;
+    }
+
+    public void setVolunteersMade(int volunteersMade) {
+        this.volunteersMade = volunteersMade;
     }
 }

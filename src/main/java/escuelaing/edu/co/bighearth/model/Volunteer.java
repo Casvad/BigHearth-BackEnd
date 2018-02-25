@@ -11,6 +11,7 @@ public class Volunteer extends User {
     public Volunteer() {
     }
 
+
     public Volunteer(String username, String password, String mail, String state, String city, String address, String description, List<String> interest, int volunteersMade, List<Event> eventRegistered, String name, String lastname, String gender, Date bornDate, int hours) {
         super(username, password, mail, state, city, address, description, interest, volunteersMade, eventRegistered);
         this.name = name;
@@ -20,13 +21,8 @@ public class Volunteer extends User {
         this.hours = hours;
     }
 
-    public Volunteer( String name, String lastname, String gender, Date bornDate, int hours) {
-        this.name = name;
-        this.lastname = lastname;
-        this.gender = gender;
-        this.bornDate = bornDate;
-        this.hours = hours;
-    }
+
+
 
     public String getName() {
         return name;
@@ -67,6 +63,8 @@ public class Volunteer extends User {
     public void setHours(int hours) {
         this.hours = hours;
     }
+
+
 
     public boolean confirmEventInscription(int idEvent){
         for (Event event: this.getEventRegistered() ) {

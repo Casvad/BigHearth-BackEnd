@@ -3,6 +3,7 @@ package escuelaing.edu.co.bighearth.controller;
 
 import escuelaing.edu.co.bighearth.model.Organization;
 import escuelaing.edu.co.bighearth.model.User;
+import escuelaing.edu.co.bighearth.security.SHA1;
 import escuelaing.edu.co.bighearth.model.Volunteer;
 import escuelaing.edu.co.bighearth.service.ServicesException;
 import escuelaing.edu.co.bighearth.service.UserService;
@@ -29,8 +30,7 @@ public class UserController
 
     @CrossOrigin
     @RequestMapping( value = "/login", method = RequestMethod.POST )
-    public Token login(@RequestBody User login )
-        throws ServletException
+    public Token login(@RequestBody User login ) throws ServletException
     {
 
          String jwtToken = "";
@@ -42,8 +42,7 @@ public class UserController
 
         String username = login.getUsername();
         String password = login.getPassword();
-
-        User user = userService.getUser( "carlos.ramirez-ot" );
+        User user = userService.getUser( login.getUsername());
 
         if ( user == null )
         {
@@ -52,7 +51,7 @@ public class UserController
 
         String pwd = user.getPassword();
 
-        if ( !password.equals( pwd ) )
+        if ( !SHA1.generateHash(password).equals( pwd ) )
         {
             throw new ServletException( "Invalid login. Please check your name and password." );
         }
