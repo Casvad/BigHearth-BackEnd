@@ -1,6 +1,7 @@
 package escuelaing.edu.co.bighearth.controller;
 
 
+
 import escuelaing.edu.co.bighearth.model.Organization;
 import escuelaing.edu.co.bighearth.model.User;
 import escuelaing.edu.co.bighearth.security.SHA1;
@@ -41,17 +42,31 @@ public class UserController
         }
 
         String username = login.getUsername();
-        String password = login.getPassword();
+        String password = login.getPassword().replaceAll(" ","");
         User user = userService.getUser( login.getUsername());
+
 
         if ( user == null )
         {
             throw new ServletException( "User username not found." );
         }
-
         String pwd = user.getPassword();
+        try{
+            password=SHA1.generateHash(password);
+        }catch(Exception e){ }
 
-        if ( !SHA1.generateHash(password).equals( pwd ) )
+
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        System.out.println(pwd);
+        System.out.println("");
+        System.out.println("");
+        System.out.println("");
+        System.out.println(password);
+
+
+        if ( !password.equals(pwd))
         {
             throw new ServletException( "Invalid login. Please check your name and password." );
         }

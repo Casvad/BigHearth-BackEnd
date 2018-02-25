@@ -1,9 +1,11 @@
 package escuelaing.edu.co.bighearth.service;
 
+
 import escuelaing.edu.co.bighearth.model.Event;
 import escuelaing.edu.co.bighearth.model.Organization;
 import escuelaing.edu.co.bighearth.model.User;
 import escuelaing.edu.co.bighearth.model.Volunteer;
+import escuelaing.edu.co.bighearth.security.SHA1;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -19,8 +21,13 @@ public class UserServiceImpl implements UserService{
 
     @PostConstruct
     private void populateSampleData() {
-        users.add(new Volunteer("carlos.ramirez-ot", "asd123","carlos.ramirez-ot@mail.escuelaing.edu.co","Cundinamarca","Bogota","","",new ArrayList<String>(),0,new ArrayList<Event>(),"","","", new java.util.Date(),1));
-        users.add(new Organization("microsoft2997", "qwerty123" , "microsoft@hotmail.com","California","Sillicon Valley","","",new ArrayList<String>(),0, new ArrayList<Event>(), "Microsoft-Inc","Microsoft eu",1234));
+        String pass="asd123";
+        try{
+            pass=SHA1.generateHash(pass);
+        }catch(Exception e){}
+
+        users.add(new Volunteer("carlos.ramirez-ot", pass,"carlos.ramirez-ot@mail.escuelaing.edu.co","Cundinamarca","Bogota","","",new ArrayList<String>(),0,new ArrayList<Event>(),"","","", new java.util.Date(),1));
+        users.add(new Organization("microsoft2997", pass, "microsoft@hotmail.com","California","Sillicon Valley","","",new ArrayList<String>(),0, new ArrayList<Event>(), "Microsoft-Inc","Microsoft eu",1234));
     }
 
     /**
