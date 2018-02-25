@@ -1,16 +1,21 @@
 package escuelaing.edu.co.bighearth.model;
 
 import java.sql.Blob;
-import java.sql.Date;
+import java.util.Date;
+import java.util.ArrayList;
 
 public class Event {
+
     private int id, numberOfVolunteers,maxVolunteers;
-    private String name, type, description;
+    private String eventType;
+    private String name, description;
     private Date eventDate;
     private Blob image;
-    private List<Volunteer> volunteers=new ArrayList<Volunteer>();
+    private List<Volunteer> volunteers=new ArrayList<>();
 
-    public Event() {
+
+    public Event(){
+
     }
 
     public Event(int id, int numberOfVolunteers,int maxVolunteers, String name, String type, String description, Date eventDate, Blob image,List<Volunteer> volunteers) {
@@ -18,11 +23,12 @@ public class Event {
         this.numberOfVolunteers = numberOfVolunteers;
         this.maxVolunteers=maxVolunteers;
         this.name = name;
-        this.type = type;
+        this.eventType = eventType;
         this.description = description;
         this.eventDate = eventDate;
         this.image = image;
         this.volunteers=volunteers;
+
     }
 
     public int getId() {
@@ -50,11 +56,11 @@ public class Event {
     }
 
     public String getType() {
-        return type;
+        return eventType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setType(String eventType) {
+        this.eventType = eventType;
     }
 
     public String getDescription() {
@@ -77,8 +83,31 @@ public class Event {
         return image;
     }
 
-    public void setImage(Blob image) {
-        this.image = image;
+    public void  setImage(Blob image) { this.image = image;}
+
+    public List<Volunteer> getVolunteers() {
+        return volunteers;
+    }
+
+    public void setVolunteers(List<Volunteer> volunteers) {
+        this.volunteers = volunteers;
+    }
+
+
+    public String getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
+    }
+
+
+    //Fase beta
+    public boolean addVolunteerEvent(Volunteer volunteerToRegister){
+        this.volunteers.add(volunteerToRegister);
+        volunteerToRegister.addEventList(this);
+        return true;
     }
 
     public int getMaxVolunteers() {

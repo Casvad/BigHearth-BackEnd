@@ -1,8 +1,11 @@
 package escuelaing.edu.co.bighearth.controller;
 
 
+import escuelaing.edu.co.bighearth.model.Organization;
 import escuelaing.edu.co.bighearth.model.User;
 import escuelaing.edu.co.bighearth.security.SHA1;
+import escuelaing.edu.co.bighearth.model.Volunteer;
+import escuelaing.edu.co.bighearth.service.ServicesException;
 import escuelaing.edu.co.bighearth.service.UserService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -13,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.ServletException;
+import java.util.Date;
+import java.util.List;
 
 
 
@@ -38,9 +43,7 @@ public class UserController
 
         String username = login.getUsername();
         String password = login.getPassword();
-
         User user = userService.getUser( login.getUsername());
-
         if ( user == null )
         {
             throw new ServletException( "User username not found." );
@@ -58,6 +61,31 @@ public class UserController
 
         return new Token( jwtToken );
     }
+
+    @RequestMapping( value = "/users", method = RequestMethod.GET)
+    public List<User> volunteers(){
+        return userService.getUsers();
+    }
+
+    
+    @RequestMapping( value = "/modifyProfileVol", method = RequestMethod.PUT)
+    public User modifyProfileVolunteer(@RequestBody Volunteer modUser){
+        try{
+            return userService.editConfigUser(modUser);
+        }catch(ServicesException servException){
+            return null;
+        }
+    }
+
+    @RequestMapping( value = "/modifyProfileOrg", method = RequestMethod.PUT)
+    public User modifyProfileOrganization(@RequestBody Organization modUser){
+        try{
+            return userService.editConfigUser(modUser);
+        }catch(ServicesException servException){
+            return null;
+        }
+    }
+
 
     public class Token
     {

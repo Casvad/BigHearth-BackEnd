@@ -1,8 +1,8 @@
 package escuelaing.edu.co.bighearth.model;
 
-import escuelaing.edu.co.bighearth.model.User;
+import java.util.List;
 
-public class Organization extends User{
+public class Organization extends User {
     private String commercialName, businessName;
     private int NIT;
     private int volunteersMade=-1;
@@ -10,12 +10,13 @@ public class Organization extends User{
     public Organization() {
     }
 
-    public Organization(String commercialName, String businessName, int NIT,int volunteersMade) {
+    public Organization(String username, String password, String mail, String state, String city, String address, String description, List<String> interest, int volunteersMade, List<Event> eventRegistered, String commercialName, String businessName, int NIT) {
+        super(username, password, mail, state, city, address, description, interest, volunteersMade,eventRegistered);
         this.commercialName = commercialName;
         this.businessName = businessName;
         this.NIT = NIT;
-        this.volunteersMade=volunteersMade;
     }
+
 
     public String getCommercialName() {
         return commercialName;
