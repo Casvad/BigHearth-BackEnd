@@ -2,7 +2,7 @@ package escuelaing.edu.co.bighearth.model;
 
 import java.sql.Blob;
 import java.util.Date;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Event {
 
