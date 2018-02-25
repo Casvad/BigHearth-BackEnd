@@ -122,11 +122,5 @@ public class Event {
         this.maxVolunteers = maxVolunteers;
     }
 
-    public List<Volunteer> getVolunteers() {
-        return volunteers;
-    }
-
-    public void setVolunteers(List<Volunteer> volunteers) {
-        this.volunteers = volunteers;
-    }
+  
 }
