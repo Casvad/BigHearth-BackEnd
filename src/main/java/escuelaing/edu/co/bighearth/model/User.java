@@ -106,16 +106,6 @@ public class User {
         this.eventRegistered.add(event);
     }
 
-    public boolean confirmUserEmail(String email) { return this.mail.equals(email); }
-
-    public List<Event> getEventRegistered() { return eventRegistered; }
-
-    public void setEventRegistered(List<Event> eventRegistered) { this.eventRegistered = eventRegistered; }
-
-    public void addEventList(Event event){
-        this.eventRegistered.add(event);
-    }
-
     public void modifyUserInterest(List<String> newInterests){
         for (String event: interest) {
             if(!newInterests.contains(event)){
