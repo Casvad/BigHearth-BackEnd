@@ -3,7 +3,7 @@ package escuelaing.edu.co.bighearth.model;
 import java.util.Date;
 import java.util.List;
 
-public class Volunteer extends User{
+public class Volunteer extends User {
     private String name, lastname, gender;
     private Date bornDate;
     private int hours;
@@ -11,8 +11,8 @@ public class Volunteer extends User{
     public Volunteer() {
     }
 
-    public Volunteer(String username, String password, String mail, String state, String city, String address, String description, List<String> interest, int volunteersMade, String name, String lastname, String gender, Date bornDate, int hours) {
-        super(username, password, mail, state, city, address, description, interest, volunteersMade);
+    public Volunteer(String username, String password, String mail, String state, String city, String address, String description, List<String> interest, int volunteersMade, List<Event> eventRegistered, String name, String lastname, String gender, Date bornDate, int hours) {
+        super(username, password, mail, state, city, address, description, interest, volunteersMade, eventRegistered);
         this.name = name;
         this.lastname = lastname;
         this.gender = gender;
@@ -66,5 +66,14 @@ public class Volunteer extends User{
 
     public void setHours(int hours) {
         this.hours = hours;
+    }
+
+    public boolean confirmEventInscription(int idEvent){
+        for (Event event: this.getEventRegistered() ) {
+            if(event.getId() == idEvent){
+                return true;
+            }
+        }
+        return false;
     }
 }

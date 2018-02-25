@@ -10,15 +10,14 @@ public class Event {
     private String name, description;
     private Date eventDate;
     private Blob image;
-    private ArrayList<User> volunteers;
+    private ArrayList<Volunteer> volunteers;
 
 
     public Event(){
 
     }
 
-    public Event(int id, int numberOfVolunteers, String name, String type, String description, Date eventDate, Blob image,ArrayList<User> volunteers) {
-
+    public Event(int id, int numberOfVolunteers, String name, String type, String description, Date eventDate, Blob image, ArrayList<Volunteer> volunteers) {
         this.id = id;
         this.numberOfVolunteers = numberOfVolunteers;
         this.name = name;
@@ -83,11 +82,18 @@ public class Event {
 
     public void  setImage(Blob image) { this.image = image;}
 
-    public ArrayList<User> getVolunteers() {
+    public ArrayList<Volunteer> getVolunteers() {
         return volunteers;
     }
 
-    public void setVolunteers(ArrayList<User> volunteers) {
+    public void setVolunteers(ArrayList<Volunteer> volunteers) {
         this.volunteers = volunteers;
+    }
+
+    //Fase beta
+    public boolean addVolunteerEvent(Volunteer volunteerToRegister){
+        this.volunteers.add(volunteerToRegister);
+        volunteerToRegister.addEventList(this);
+        return true;
     }
 }

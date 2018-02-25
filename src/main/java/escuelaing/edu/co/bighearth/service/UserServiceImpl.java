@@ -1,5 +1,6 @@
 package escuelaing.edu.co.bighearth.service;
 
+import escuelaing.edu.co.bighearth.model.Event;
 import escuelaing.edu.co.bighearth.model.Organization;
 import escuelaing.edu.co.bighearth.model.User;
 import escuelaing.edu.co.bighearth.model.Volunteer;
@@ -12,10 +13,14 @@ import java.util.*;
 @Service
 public class UserServiceImpl implements UserService{
 
-    private List<User> users = new ArrayList<>();
+    private static List<User> users = new ArrayList<>();
 
+    public UserServiceImpl() { }
 
-    public UserServiceImpl() {
+    @PostConstruct
+    private void populateSampleData() {
+        users.add(new Volunteer("carlos.ramirez-ot", "asd123","carlos.ramirez-ot@mail.escuelaing.edu.co","Cundinamarca","Bogota","","",new ArrayList<String>(),0,new ArrayList<Event>(),"","","", new java.util.Date(),1));
+        users.add(new Organization("microsoft2997", "qwerty123" , "microsoft@hotmail.com","California","Sillicon Valley","","",new ArrayList<String>(),0, new ArrayList<Event>(), "Microsoft-Inc","Microsoft eu",1234));
     }
 
     /**
@@ -32,18 +37,8 @@ public class UserServiceImpl implements UserService{
         return null;
     }
 
-
-    @PostConstruct
-    private void populateSampleData()
-    {
-        users.add(new Volunteer("carlos.ramirez-ot", "asd123","carlos.ramirez-ot@mail.escuelaing.edu.co","Cundinamarca","Bogota","","",new ArrayList<String>(),0,"","","", new java.util.Date(),1));
-        users.add(new Organization("microsoft2997", "qwerty123" , "microsoft@hotmail.com","California","Sillicon Valley","","",new ArrayList<String>(),0,"Microsoft-Inc","Microsoft eu",1234));
-    }
-
-
     @Override
-    public List<User> getUsers()
-    {
+    public List<User> getUsers() {
         return users;
     }
 
@@ -64,7 +59,7 @@ public class UserServiceImpl implements UserService{
     */
     @Override
     public User editConfigUser(User modUser) throws ServicesException {
-        synchronized (users){
+        synchronized (this.users){
             User findUser = searchUserName(modUser.getUsername());
             if( findUser == null){
                 throw new ServicesException("No se encuentra el usuario para modificar su perfil");

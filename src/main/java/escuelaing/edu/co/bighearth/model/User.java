@@ -3,19 +3,18 @@ package escuelaing.edu.co.bighearth.model;
 import java.util.*;
 
 
-public class User{
+public class User {
 
 
     private String mail="", state="", city="", address="",username="", password="", description="";
-    private List<String> interest = new ArrayList<>();
+    private List<String> interest;
+    private List<Event> eventRegistered;
     private int volunteersMade=-1;
 
 
-    public User(){
+    public User(){ }
 
-    }
-
-    public User(String username,String password,String mail, String state, String city, String address, String description, List<String> interest, int volunteersMade) {
+    public User(String username,String password,String mail, String state, String city, String address, String description, List<String> interest, int volunteersMade, List<Event> eventRegistered) {
         this.mail = mail;
         this.state = state;
         this.city = city;
@@ -24,6 +23,7 @@ public class User{
         this.password = password;
         this.description = description;
         this.interest = interest;
+        this.eventRegistered = eventRegistered;
         this.volunteersMade = volunteersMade;
     }
 
@@ -101,6 +101,14 @@ public class User{
     }
 
     public boolean confirmUserEmail(String email) { return this.mail.equals(email); }
+
+    public List<Event> getEventRegistered() { return eventRegistered; }
+
+    public void setEventRegistered(List<Event> eventRegistered) { this.eventRegistered = eventRegistered; }
+
+    public void addEventList(Event event){
+        this.eventRegistered.add(event);
+    }
 
     public void modifyUserInterest(List<String> newInterests){
         for (String event: interest) {

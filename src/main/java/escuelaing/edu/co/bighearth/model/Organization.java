@@ -2,15 +2,15 @@ package escuelaing.edu.co.bighearth.model;
 
 import java.util.List;
 
-public class Organization extends User{
+public class Organization extends User {
     private String commercialName, businessName;
     private int NIT;
 
     public Organization() {
     }
 
-    public Organization(String username, String password, String mail, String state, String city, String address, String description, List<String> interest, int volunteersMade, String commercialName, String businessName, int NIT) {
-        super(username, password, mail, state, city, address, description, interest, volunteersMade);
+    public Organization(String username, String password, String mail, String state, String city, String address, String description, List<String> interest, int volunteersMade, List<Event> eventRegistered, String commercialName, String businessName, int NIT) {
+        super(username, password, mail, state, city, address, description, interest, volunteersMade,eventRegistered);
         this.commercialName = commercialName;
         this.businessName = businessName;
         this.NIT = NIT;
