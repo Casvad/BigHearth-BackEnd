@@ -16,5 +16,5 @@ public interface EventService {
 
     List<Event> getUserListEvent(String username);
     
-
+    boolean sendMailEvent(List<String> emails,List<String> mailInfo);
 }

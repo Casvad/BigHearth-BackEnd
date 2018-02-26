@@ -79,10 +79,12 @@ public class EventServiceImpl implements EventService{
     @Override
     public List<Event> getUserListEvent(String username) {
         User findUser = userService.getUser(username);
-        if(findUser != null){
-            return findUser.getEventRegistered();
-        }
-        return null;
+        return findUser!=null? findUser.getEventRegistered():new ArrayList<Event>();
+    }
+
+    @Override
+    public boolean sendMailEvent(List<String> emails, List<String> mailInfo) {
+        return Mail.sendEmail(emails,mailInfo);
     }
 
 
