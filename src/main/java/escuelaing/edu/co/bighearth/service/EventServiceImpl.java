@@ -4,6 +4,7 @@ import escuelaing.edu.co.bighearth.model.Event;
 import escuelaing.edu.co.bighearth.model.EventId;
 import escuelaing.edu.co.bighearth.model.User;
 import escuelaing.edu.co.bighearth.model.Volunteer;
+import escuelaing.edu.co.bighearth.mail.Mail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

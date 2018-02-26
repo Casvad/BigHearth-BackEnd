@@ -11,6 +11,7 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.util.List;
 
 public abstract class Mail {
 
@@ -39,8 +40,8 @@ public abstract class Mail {
                 Message message = new MimeMessage(session);
                 message.setFrom(new InternetAddress("betomilol271@gmail.com"));
                 message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(email));
-                message.setSubject(mailBody.get(0));
-                message.setText(mailBody.get(1));
+                message.setSubject(mailInfo.get(0));
+                message.setText(mailInfo.get(1));
                 Transport.send(message);
 
                 System.out.println("Done");

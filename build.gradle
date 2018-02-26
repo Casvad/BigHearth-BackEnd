@@ -33,4 +33,5 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	compile(group: 'org.apache.shiro', name: 'shiro-all', version: '1.2.3')
+	compile (group: 'javax.mail', name: 'mail', version: '1.4.1')
 }

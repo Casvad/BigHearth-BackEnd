@@ -68,7 +68,7 @@ public class Volunteer extends User {
 
     public boolean confirmEventInscription(int idEvent){
         for (Event event: this.getEventRegistered() ) {
-            if(event.getId() == idEvent){
+            if(event.getEventId().getId() == idEvent){
                 return true;
             }
         }
