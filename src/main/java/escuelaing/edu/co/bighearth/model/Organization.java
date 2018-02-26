@@ -1,14 +1,13 @@
 package escuelaing.edu.co.bighearth.model;
 
 import java.util.List;
+import java.util.Set;
 
 public class Organization extends User {
     private String commercialName, businessName;
     private int NIT;
-    private int volunteersMade=-1;
 
-    public Organization() {
-    }
+    public Organization() {}
 
     public Organization(String username, String password, String mail, String state, String city, String address, String description, List<String> interest, int volunteersMade, List<Event> eventRegistered, String commercialName, String businessName, int NIT) {
         super(username, password, mail, state, city, address, description, interest, volunteersMade,eventRegistered);
@@ -16,7 +15,6 @@ public class Organization extends User {
         this.businessName = businessName;
         this.NIT = NIT;
     }
-
 
     public String getCommercialName() {
         return commercialName;
@@ -42,11 +40,4 @@ public class Organization extends User {
         this.NIT = NIT;
     }
 
-    public int getVolunteersMade() {
-        return volunteersMade;
-    }
-
-    public void setVolunteersMade(int volunteersMade) {
-        this.volunteersMade = volunteersMade;
-    }
 }

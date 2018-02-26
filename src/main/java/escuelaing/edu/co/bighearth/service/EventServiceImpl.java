@@ -23,22 +23,24 @@ public class EventServiceImpl implements EventService{
     
     @PostConstruct
     private void populateSampleData() {
-        events.add( new Event( 0 ,0, 20 , "Asistencia a la mujer y la infancia " , "COMUNITARIO",
+        Event newEvent1 = new Event( 0 ,20 , "Asistencia a la mujer y la infancia " , "COMUNITARIO",
                 "Necesitamos profesor de inglés para impartir curso básico a las madres que acuden a la fundación, el curso está enfocado "+
-                        "para su mejora formativa y laboral, tiene una duración de una hora y se imparte solo un día a la semana.", new Date(2018),null,new ArrayList<>()));
-        events.add( new Event( 1 ,0, 50 , "Refuerzo escolar en ies" , "EDUCATIVO",
+                        "para su mejora formativa y laboral, tiene una duración de una hora y se imparte solo un día a la semana.", new Date(2018),null,new ArrayList<>());
+
+        events.add(newEvent1);
+        events.add( new Event( 1 ,50 , "Refuerzo escolar en ies" , "EDUCATIVO",
                 "Se necesitan voluntarios para impartir clases de repaso escolar, a menores en riesgo de exclusión social de 12 a 18 años, "+
                         "para su mejora formativa y laboral, tiene una duración de una hora y se imparte solo un día a la semana.", new Date(2018),null,new ArrayList<>()));
-        events.add( new Event( 2 ,0, 30 , "Voluntarias/os para proyecto en línea en madrid " , "EDUCATIVO",
+        events.add( new Event( 2 , 30 , "Voluntarias/os para proyecto en línea en madrid " , "EDUCATIVO",
                 "Se necesitan personas voluntarias para tutorías individualizadas, a niños y niñas preadolescentes  "+
                         "con problemas de integración familiar, escolar y social.", new Date(2018), null,new ArrayList<>()));
-        events.add( new Event( 3 ,0, 100 , "Acompañamiento en residencias de la tercera edad" , "OCIO Y TIEMPO LIBRE",
+        events.add( new Event( 3 ,100 , "Acompañamiento en residencias de la tercera edad" , "OCIO Y TIEMPO LIBRE",
                 "Necesitamos voluntari@s que se ofrezcan para hacerle un poquito de compañía a una señora que está en una Residencia de la tercera edad ",
                 new Date(2018), null,new ArrayList<>()));
 
-        userService.getUser("carlos.ramirez-ot").addEventList(events.get(0));
-        userService.getUser("carlos.ramirez-ot").addEventList(events.get(1));
-        userService.getUser("carlos.ramirez-ot").addEventList(events.get(2));
+        userService.getUser("carlos.ramirez-ot").addEventList(newEvent1);
+
+        newEvent1.getVolunteers().add(userService.getUser("carlos.ramirez-ot").getUsername());
     }
 
 
@@ -72,6 +74,16 @@ public class EventServiceImpl implements EventService{
             return findUser.getEventRegistered();
         }
         return null;
+    }
+
+    @Override
+    public Volunteer leaveEventUser(int idEvent, Volunteer volunteer) {
+        for (Event event : events){
+            if(event.getId() == idEvent){
+                return event.removeVolunteer(volunteer);
+            }
+        }
+        return volunteer;
     }
 
 

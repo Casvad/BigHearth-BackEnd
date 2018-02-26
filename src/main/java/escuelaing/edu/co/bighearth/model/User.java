@@ -1,22 +1,20 @@
 package escuelaing.edu.co.bighearth.model;
 
+import java.io.Serializable;
 import java.util.*;
 
 
-public class User {
+public class User implements Serializable {
 
 
     private String mail="", state="", city="", address="",username="", password="", description="";
     private List<String> interest=new ArrayList<>();
-    private List<Event> eventRegistered=new ArrayList<>();
-    private int volunteersMade=-1;
-
-
+    private List<Event> eventRegistered = new ArrayList<>();
+    private int volunteersMade = 0;
 
     public User(){ }
 
     public User(String username,String password,String mail, String state, String city, String address, String description, List<String> interest, int volunteersMade, List<Event> eventRegistered) {
-
         this.mail = mail;
         this.state = state;
         this.city = city;
@@ -27,7 +25,6 @@ public class User {
         this.interest = interest;
         this.eventRegistered = eventRegistered;
         this.volunteersMade = volunteersMade;
-
     }
 
 
@@ -95,12 +92,15 @@ public class User {
         this.interest = interest;
     }
 
-
     public boolean confirmUserEmail(String email) { return this.mail.equals(email); }
 
     public List<Event> getEventRegistered() { return eventRegistered; }
 
     public void setEventRegistered(List<Event> eventRegistered) { this.eventRegistered = eventRegistered; }
+
+    public int getVolunteersMade() { return volunteersMade; }
+
+    public void setVolunteersMade(int volunteersMade) { this.volunteersMade = volunteersMade; }
 
     public void addEventList(Event event){
         this.eventRegistered.add(event);
@@ -123,7 +123,7 @@ public class User {
         if (this==us) return true;
         if (this == null) return false;
         if (this.getClass() != us.getClass()) return false;
-        return this.mail.equals(us.getMail());
+        return this.username.equals(us.getUsername());
     }
 
     @Override

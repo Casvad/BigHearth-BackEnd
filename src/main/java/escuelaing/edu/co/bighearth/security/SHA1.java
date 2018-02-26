@@ -5,11 +5,7 @@ package escuelaing.edu.co.bighearth.security;
  *
  * @author martinjhm271
  */
-import org.apache.shiro.authc.credential.DefaultPasswordService;
-import org.apache.shiro.crypto.RandomNumberGenerator;
-import org.apache.shiro.crypto.hash.DefaultHashService;
-import org.apache.shiro.crypto.hash.Sha256Hash;
-import org.apache.shiro.util.SimpleByteSource;
+
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;

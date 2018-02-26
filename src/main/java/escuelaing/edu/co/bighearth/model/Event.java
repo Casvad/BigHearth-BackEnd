@@ -1,28 +1,22 @@
 package escuelaing.edu.co.bighearth.model;
 
+import java.io.Serializable;
 import java.sql.Blob;
 import java.util.Date;
 import java.util.*;
 
-public class Event {
+public class Event implements Serializable {
 
-    private int id, numberOfVolunteers,maxVolunteers;
-    private String eventType;
-    private String name, description;
+    private int id, maxVolunteers;
+    private String eventType, name, description;
     private Date eventDate;
     private Blob image;
+    private List<String> volunteers = new ArrayList<>();
 
-    private List<Volunteer> volunteers=new ArrayList<>();
+    public Event(){}
 
-
-    public Event(){
-
-    }
-
-    public Event(int id, int numberOfVolunteers,int maxVolunteers, String name, String type, String description, Date eventDate, Blob image,List<Volunteer> volunteers) {
-
+    public Event(int id, int maxVolunteers, String eventType, String name, String description, Date eventDate, Blob image,List<String> volunteers) {
         this.id = id;
-        this.numberOfVolunteers = numberOfVolunteers;
         this.maxVolunteers=maxVolunteers;
         this.name = name;
         this.eventType = eventType;
@@ -38,14 +32,6 @@ public class Event {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getNumberOfVolunteers() {
-        return numberOfVolunteers;
-    }
-
-    public void setNumberOfVolunteers(int numberOfVolunteers) {
-        this.numberOfVolunteers = numberOfVolunteers;
     }
 
     public String getName() {
@@ -86,16 +72,13 @@ public class Event {
 
     public void  setImage(Blob image) { this.image = image;}
 
-
-
-    public List<Volunteer> getVolunteers() {
+    public List<String> getVolunteers() {
         return volunteers;
     }
 
-    public void setVolunteers(List<Volunteer> volunteers) {
+    public void setVolunteers(List<String> volunteers) {
         this.volunteers = volunteers;
     }
-
 
     public String getEventType() {
         return eventType;
@@ -103,15 +86,6 @@ public class Event {
 
     public void setEventType(String eventType) {
         this.eventType = eventType;
-    }
-
-
-
-    //Fase beta
-    public boolean addVolunteerEvent(Volunteer volunteerToRegister){
-        this.volunteers.add(volunteerToRegister);
-        volunteerToRegister.addEventList(this);
-        return true;
     }
 
     public int getMaxVolunteers() {
@@ -122,5 +96,21 @@ public class Event {
         this.maxVolunteers = maxVolunteers;
     }
 
-  
+    //Fase beta
+    public boolean addVolunteerEvent(Volunteer volunteerToRegister){
+        this.volunteers.add(volunteerToRegister.getUsername());
+        volunteerToRegister.addEventList(this);
+        return true;
+    }
+
+    public Volunteer removeVolunteer(Volunteer volunteerToRegister){
+        for (String volunteer: volunteers ) {
+            if (volunteerToRegister.getUsername().equals(volunteer)) {
+                volunteerToRegister.leaveEvent(this.getId());
+            }
+        }
+        volunteers.remove(volunteerToRegister.getUsername());
+        return volunteerToRegister;
+    }
+
 }
