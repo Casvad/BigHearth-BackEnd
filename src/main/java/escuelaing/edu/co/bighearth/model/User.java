@@ -1,21 +1,23 @@
 package escuelaing.edu.co.bighearth.model;
 
-
-
 import java.util.*;
-public class User{
+
+
+public class User {
 
 
     private String mail="", state="", city="", address="",username="", password="", description="";
-    private Set<String> interest=new HashSet<String>();
+    private List<String> interest=new ArrayList<>();
+    private List<Event> eventRegistered=new ArrayList<>();
     private int volunteersMade=-1;
+    private String image;
 
 
-    public User(){
 
-    }
+    public User(){ }
 
-    public User(String username,String password,String mail, String state, String city, String address, String description, Set<String> interest, int volunteersMade) {
+    public User(String username,String password,String mail, String state, String city, String address, String description, List<String> interest, int volunteersMade, List<Event> eventRegistered,String image) {
+        this.image=image;
         this.mail = mail;
         this.state = state;
         this.city = city;
@@ -24,7 +26,9 @@ public class User{
         this.password = password;
         this.description = description;
         this.interest = interest;
+        this.eventRegistered = eventRegistered;
         this.volunteersMade = volunteersMade;
+
     }
 
 
@@ -84,11 +88,11 @@ public class User{
         this.description = description;
     }
 
-    public Set<String> getInterest() {
+    public List<String> getInterest() {
         return interest;
     }
 
-    public void setInterest(Set<String> interest) {
+    public void setInterest(List<String> interest) {
         this.interest = interest;
     }
 
@@ -100,7 +104,43 @@ public class User{
         this.volunteersMade = volunteersMade;
     }
 
+    public boolean confirmUserEmail(String email) { return this.mail.equals(email); }
 
+    public List<Event> getEventRegistered() { return eventRegistered; }
+
+    public void setEventRegistered(List<Event> eventRegistered) { this.eventRegistered = eventRegistered; }
+
+    public void addEventList(Event event){
+        this.eventRegistered.add(event);
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void modifyUserInterest(List<String> newInterests){
+        for (String event: interest) {
+            if(!newInterests.contains(event)){
+                interest.remove(event);
+            }
+        }
+        for(String event : newInterests) {
+            if (!interest.contains(event)) {
+                interest.add(event);
+            }
+        }
+    }
+
+    public boolean equals (User us){
+        if (this==us) return true;
+        if (this == null) return false;
+        if (this.getClass() != us.getClass()) return false;
+        return this.mail.equals(us.getMail());
+    }
 
     @Override
     public String toString()

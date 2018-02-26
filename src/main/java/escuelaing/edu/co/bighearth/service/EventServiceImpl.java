@@ -1,6 +1,5 @@
 package escuelaing.edu.co.bighearth.service;
 
-import com.sun.crypto.provider.BlowfishParameters;
 import escuelaing.edu.co.bighearth.model.Event;
 import escuelaing.edu.co.bighearth.model.EventId;
 import escuelaing.edu.co.bighearth.model.User;
@@ -9,24 +8,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import javax.sql.rowset.serial.SerialBlob;
-import java.sql.Array;
-import java.sql.Blob;
-import java.sql.SQLException;
 import java.util.*;
 
 
 @Service
 public class EventServiceImpl implements EventService{
 
-    private List<Event> events = new ArrayList<>();
+    @Autowired
+    private UserService userService;
 
+    private static List<Event> events = new ArrayList<>();
 
-    public EventServiceImpl()
-    {
-    }
-
-
+    public EventServiceImpl() { }
+    
+    
     @PostConstruct
     private void populateSampleData() {
         ArrayList<String> voluntieers = new ArrayList<>();
@@ -43,6 +38,12 @@ public class EventServiceImpl implements EventService{
         events.add( new Event( new EventId(3,"Acompañamiento en residencias de la tercera edad") , 100 , "OCIO Y TIEMPO LIBRE",
         "Necesitamos voluntari@s que se ofrezcan para hacerle un poquito de compañía a una señora que está en una Residencia de la tercera edad ",
         new Date(2018), blop,voluntieers));
+
+        userService.getUser("carlos.ramirez-ot").addEventList(events.get(0));
+        userService.getUser("carlos.ramirez-ot").addEventList(events.get(1));
+        userService.getUser("carlos.ramirez-ot").addEventList(events.get(2));
+        events.get(0).getVolunteers().add(userService.getUser("carlos.ramirez-ot").getUsername());
+
     }
 
 
@@ -53,9 +54,9 @@ public class EventServiceImpl implements EventService{
     }
 
     @Override
-    public Event get( EventId eventId ) {
+    public Event getEventById( EventId eventId ) {
         Event event=new Event();
-        for(int i=0;i<events.size();i++){
+        for(int i = 0;i < events.size();i++){
             if(events.get(i).getEventId().getId()==eventId.getId() &&events.get(i).getEventId().getName()==eventId.getName()){
                 return events.get(i);
             }
@@ -64,15 +65,24 @@ public class EventServiceImpl implements EventService{
     }
 
     @Override
-    public Event create( Event event ) {
-        int provisionalId =events.get(events.size()-1).getEventId().getId()+1;
-        event.setEventId(event.getEventId().setId(provisionalId));
-        for(Event e: events){
-            if(!(e.getEventId().getId()==event.getEventId().getId() &&e.getEventId().getName()==event.getEventId().getName())){
-                events.add(event);
+    public Event createEvent( Event event ) {
+            int provisionalId =events.get(events.size()-1).getEventId().getId()+1;
+            event.setEventId(new EventId(provisionalId,event.getEventId().getName()));
+            for(Event e: events){
+                if(!(e.getEventId().getId()==event.getEventId().getId() &&e.getEventId().getName()==event.getEventId().getName())){
+                    events.add(event);
+                }
             }
-        }
         return event;
+    }
+
+    @Override
+    public List<Event> getUserListEvent(String username) {
+        User findUser = userService.getUser(username);
+        if(findUser != null){
+            return findUser.getEventRegistered();
+        }
+        return null;
     }
 
 

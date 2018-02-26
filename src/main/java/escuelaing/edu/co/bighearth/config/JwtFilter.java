@@ -1,6 +1,3 @@
-
-
-
 package escuelaing.edu.co.bighearth.config;
 
 import io.jsonwebtoken.Claims;

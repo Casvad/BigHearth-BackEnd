@@ -3,7 +3,7 @@ package escuelaing.edu.co.bighearth.model;
 import java.sql.Blob;
 import java.util.Date;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import escuelaing.edu.co.bighearth.model.User;
 
@@ -24,6 +24,7 @@ public class Event {
 
     }
 
+
     public Event(EventId eventId,int maxVolunteers, String eventType, String description, Date eventDate, String image,List<String> volunteers) {
 
         this.eventId = eventId;
@@ -37,7 +38,7 @@ public class Event {
 
     public EventId getEventId() {return eventId; }
 
-    public void setEventId(void eventId) {
+    public void setEventId(EventId eventId) {
         this.eventId = eventId;
     }
 
@@ -95,4 +96,11 @@ public class Event {
     public void setMaxVolunteers(int maxVolunteers) {
         this.maxVolunteers = maxVolunteers;
     }
+
+    //Fase beta
+    public boolean addVolunteerEvent(Volunteer volunteerToRegister){
+        this.volunteers.add(volunteerToRegister.getUsername());
+        return true;
+    }
+
 }
