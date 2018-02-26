@@ -20,7 +20,7 @@ public abstract class Mail {
     private boolean ans=true;
 
 
-    public boolean sendEmail(List<String> emails,List<String> mailInfo){
+    public static boolean sendEmail(List<String> emails,List<String> mailInfo){
 
         Properties props = new Properties();
         props.put("mail.smtp.starttls.enable", "true");
