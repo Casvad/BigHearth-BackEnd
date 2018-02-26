@@ -15,9 +15,9 @@ import java.util.List;
 
 public abstract class Mail {
 
-    private String username = "betomilol271@gmail.com";
-    private String password = "martinjhmMESSI10";
-    private boolean ans=true;
+    private static String username = "betomilol271@gmail.com";
+    private static String password = "martinjhmMESSI10";
+    private static boolean ans=true;
 
 
     public static boolean sendEmail(List<String> emails,List<String> mailInfo){
