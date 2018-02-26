@@ -3,61 +3,51 @@ package escuelaing.edu.co.bighearth.model;
 import java.sql.Blob;
 import java.util.Date;
 import java.util.ArrayList;
+import java.util.List;
+
 import escuelaing.edu.co.bighearth.model.User;
 
 public class Event {
-    private int id, numberOfVolunteers;
-    private String name, type, description;
+
+    private EventId eventId;
+
+    private int maxVolunteers;
+    private String eventType;
+    private String description;
     private Date eventDate;
-    private Blob image;
-    private ArrayList<User> volunteers;
+    private String image;
+
+    private List<String> volunteers=new ArrayList<>();
 
 
     public Event(){
 
     }
 
-    public Event(int id, int numberOfVolunteers, String name, String type, String description, Date eventDate, Blob image,ArrayList<User> volunteers) {
-        this.id = id;
-        this.numberOfVolunteers = numberOfVolunteers;
-        this.name = name;
-        this.type = type;
+    public Event(EventId eventId,int maxVolunteers, String eventType, String description, Date eventDate, String image,List<String> volunteers) {
+
+        this.eventId = eventId;
+        this.maxVolunteers=maxVolunteers;
+        this.eventType = eventType;
         this.description = description;
         this.eventDate = eventDate;
         this.image = image;
         this.volunteers = volunteers;
     }
 
-    public int getId() {
-        return id;
+    public EventId getEventId() {return eventId; }
+
+    public void setEventId(void eventId) {
+        this.eventId = eventId;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getNumberOfVolunteers() {
-        return numberOfVolunteers;
-    }
-
-    public void setNumberOfVolunteers(int numberOfVolunteers) {
-        this.numberOfVolunteers = numberOfVolunteers;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getType() {
-        return type;
+        return eventType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setType(String eventType) {
+        this.eventType = eventType;
     }
 
     public String getDescription() {
@@ -76,17 +66,33 @@ public class Event {
         this.eventDate = eventDate;
     }
 
-    public Blob getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void  setImage(Blob image) { this.image = image;}
+    public void  setImage(String image) { this.image = image;}
 
-    public ArrayList<User> getVolunteers() {
+    public List<String> getVolunteers() {
         return volunteers;
     }
 
-    public void setVolunteers(ArrayList<User> volunteers) {
+    public void setVolunteers(List<String> volunteers) {
         this.volunteers = volunteers;
+    }
+
+    public String getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
+    }
+
+    public int getMaxVolunteers() {
+        return maxVolunteers;
+    }
+
+    public void setMaxVolunteers(int maxVolunteers) {
+        this.maxVolunteers = maxVolunteers;
     }
 }
