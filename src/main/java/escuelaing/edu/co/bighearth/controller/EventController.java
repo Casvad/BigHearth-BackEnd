@@ -32,9 +32,9 @@ public class EventController {
     }
 
     @CrossOrigin
-    @RequestMapping( value = "/{idEvent.nameEvent}", method = RequestMethod.GET)
-    public Event getEventById(@PathVariable int idEvent,@PathVariable String nameEvent){
-        return eventService.getEventById(new EventId(idEvent,nameEvent));
+    @RequestMapping( value = "/{idEvent}.{nameEvent}", method = RequestMethod.GET)
+    public Event getEventById(@PathVariable String idEvent,@PathVariable String nameEvent){
+        return eventService.getEventById(new EventId(Integer.parseInt(idEvent),nameEvent));
     }
 
 

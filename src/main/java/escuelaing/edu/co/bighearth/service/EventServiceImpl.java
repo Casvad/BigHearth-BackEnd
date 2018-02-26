@@ -33,7 +33,7 @@ public class EventServiceImpl implements EventService{
         events.add( new Event( new EventId(1, "Refuerzo escolar en ies") , 50 , "EDUCATIVO",
         "Se necesitan voluntarios para impartir clases de repaso escolar, a menores en riesgo de exclusión social de 12 a 18 años, "+
         "para su mejora formativa y laboral, tiene una duración de una hora y se imparte solo un día a la semana.", new Date(2018),blop,voluntieers));
-        events.add( new Event( new EventId(2, "Voluntarias/os para proyecto en línea en madrid") , 30 , "EDUCATIVO",
+        events.add( new Event( new EventId(2, "Voluntarios para proyecto en línea en madrid") , 30 , "EDUCATIVO",
         "Se necesitan personas voluntarias para tutorías individualizadas, a niños y niñas preadolescentes  "+
         "con problemas de integración familiar, escolar y social.", new Date(2018), blop,voluntieers));
         events.add( new Event( new EventId(3,"Acompañamiento en residencias de la tercera edad") , 100 , "OCIO Y TIEMPO LIBRE",
@@ -57,8 +57,12 @@ public class EventServiceImpl implements EventService{
     @Override
     public Event getEventById( EventId eventId ) {
         Event event=new Event();
+        System.out.println(eventId.getName());
+        System.out.println(eventId.getId());
         for(int i = 0;i < events.size();i++){
-            if(events.get(i).getEventId().getId()==eventId.getId() &&events.get(i).getEventId().getName()==eventId.getName()){
+            System.out.println(events.get(i).getEventId().getId());
+            System.out.println(events.get(i).getEventId().getName());
+            if(events.get(i).getEventId().getId()==eventId.getId()){
                 return events.get(i);
             }
         }
