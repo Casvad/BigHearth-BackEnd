@@ -12,8 +12,8 @@ public class Volunteer extends User {
     }
 
 
-    public Volunteer(String username, String password, String mail, String state, String city, String address, String description, List<String> interest, int volunteersMade, List<Event> eventRegistered, String name, String lastname, String gender, Date bornDate, int hours) {
-        super(username, password, mail, state, city, address, description, interest, volunteersMade, eventRegistered);
+    public Volunteer(String username, String password, String mail, String state, String city, String address, String description, List<String> interest, int volunteersMade, List<Event> eventRegistered, String name, String lastname, String gender, Date bornDate, int hours,String image) {
+        super(username, password, mail, state, city, address, description, interest, volunteersMade, eventRegistered,image);
         this.name = name;
         this.lastname = lastname;
         this.gender = gender;

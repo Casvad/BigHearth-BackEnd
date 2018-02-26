@@ -9,12 +9,11 @@ public interface EventService {
 
     List<Event> getEvents();
 
-    Event get( int eventid );
+    Event getEventById( int eventid );
 
-    Event create(Event event);
+    Event createEvent(Event event);
 
     List<Event> getUserListEvent(String username);
-
-
+    
 
 }

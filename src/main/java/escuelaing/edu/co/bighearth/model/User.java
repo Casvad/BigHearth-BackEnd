@@ -10,13 +10,14 @@ public class User {
     private List<String> interest=new ArrayList<>();
     private List<Event> eventRegistered=new ArrayList<>();
     private int volunteersMade=-1;
+    private String image;
 
 
 
     public User(){ }
 
-    public User(String username,String password,String mail, String state, String city, String address, String description, List<String> interest, int volunteersMade, List<Event> eventRegistered) {
-
+    public User(String username,String password,String mail, String state, String city, String address, String description, List<String> interest, int volunteersMade, List<Event> eventRegistered,String image) {
+        this.image=image;
         this.mail = mail;
         this.state = state;
         this.city = city;
@@ -95,6 +96,13 @@ public class User {
         this.interest = interest;
     }
 
+    public int getVolunteersMade() {
+        return volunteersMade;
+    }
+
+    public void setVolunteersMade(int volunteersMade) {
+        this.volunteersMade = volunteersMade;
+    }
 
     public boolean confirmUserEmail(String email) { return this.mail.equals(email); }
 
@@ -104,6 +112,14 @@ public class User {
 
     public void addEventList(Event event){
         this.eventRegistered.add(event);
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public void modifyUserInterest(List<String> newInterests){

@@ -26,8 +26,8 @@ public class UserServiceImpl implements UserService{
             pass=SHA1.generateHash(pass);
         }catch(Exception e){}
 
-        users.add(new Volunteer("carlos.ramirez-ot", pass,"carlos.ramirez-ot@mail.escuelaing.edu.co","Cundinamarca","Bogota","","",new ArrayList<String>(),0,new ArrayList<Event>(),"","","", new java.util.Date(),1));
-        users.add(new Organization("microsoft2997", pass, "microsoft@hotmail.com","California","Sillicon Valley","","",new ArrayList<String>(),0, new ArrayList<Event>(), "Microsoft-Inc","Microsoft eu",1234));
+        users.add(new Volunteer("carlos.ramirez-ot", pass,"carlos.ramirez-ot@mail.escuelaing.edu.co","Cundinamarca","Bogota","","",new ArrayList<String>(),0,new ArrayList<Event>(),"","","", new java.util.Date(),1,"https://www.w3schools.com/w3css/img_lights.jpg"));
+        users.add(new Organization("microsoft2997", pass, "microsoft@hotmail.com","California","Sillicon Valley","","",new ArrayList<String>(),0, new ArrayList<Event>(), "Microsoft-Inc","Microsoft eu",1234,"https://www.w3schools.com/w3css/img_lights.jpg"));
     }
 
     /**

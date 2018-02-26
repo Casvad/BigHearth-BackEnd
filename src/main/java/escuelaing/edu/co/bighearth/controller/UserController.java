@@ -56,15 +56,6 @@ public class UserController
         }catch(Exception e){ }
 
 
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println(pwd);
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println(password);
-
 
         if ( !password.equals(pwd))
         {
@@ -77,11 +68,13 @@ public class UserController
         return new Token( jwtToken );
     }
 
+    @CrossOrigin
     @RequestMapping( value = "/users", method = RequestMethod.GET)
     public List<User> volunteers(){
         return userService.getUsers();
     }
 
+    @CrossOrigin
     @RequestMapping( value = "/modifyProfileVol", method = RequestMethod.PUT)
     public User modifyProfileVolunteer(@RequestBody Volunteer modUser){
         try{
@@ -91,6 +84,7 @@ public class UserController
         }
     }
 
+    @CrossOrigin
     @RequestMapping( value = "/modifyProfileOrg", method = RequestMethod.PUT)
     public User modifyProfileOrganization(@RequestBody Organization modUser){
         try{

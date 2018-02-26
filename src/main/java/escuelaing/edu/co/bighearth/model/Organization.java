@@ -10,8 +10,8 @@ public class Organization extends User {
     public Organization() {
     }
 
-    public Organization(String username, String password, String mail, String state, String city, String address, String description, List<String> interest, int volunteersMade, List<Event> eventRegistered, String commercialName, String businessName, int NIT) {
-        super(username, password, mail, state, city, address, description, interest, volunteersMade,eventRegistered);
+    public Organization(String username, String password, String mail, String state, String city, String address, String description, List<String> interest, int volunteersMade, List<Event> eventRegistered, String commercialName, String businessName, int NIT,String image) {
+        super(username, password, mail, state, city, address, description, interest, volunteersMade,eventRegistered, image);
         this.commercialName = commercialName;
         this.businessName = businessName;
         this.NIT = NIT;
