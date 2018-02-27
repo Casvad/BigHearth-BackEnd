@@ -16,7 +16,6 @@ public interface EventService {
 
     List<Event> getUserListEvent(String username);
     
-    boolean sendMailEvent(List<String> emails,List<String> mailInfo);
+    boolean sendMailEvent(EventId eventId,List<String> mailInfo);
 
-    List<String> getEmailUsersOfEvent(String username, EventId eventId);
 }

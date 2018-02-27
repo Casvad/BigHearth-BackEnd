@@ -1,6 +1,6 @@
 package escuelaing.edu.co.bighearth.model;
 
-public class EventId {
+public class  EventId {
 
     private int id;
     private String name;

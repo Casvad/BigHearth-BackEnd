@@ -39,20 +39,14 @@ public class EventController {
 
 
     @CrossOrigin
-    @RequestMapping(value="/sendMailEvent",method = RequestMethod.POST )
-    public boolean sendMailEvent(@RequestBody List<String> emails,@RequestBody List<String> mailInfo){
-        return eventService.sendMailEvent(emails,mailInfo);
+    @RequestMapping(value="/sendMailEvent/{idEvent}.{nameEvent}",method = RequestMethod.POST )
+    public boolean sendMailEvent(@PathVariable String idEvent,@PathVariable String nameEvent,@RequestBody List<String> mailInfo){
+        return eventService.sendMailEvent(new EventId(Integer.parseInt(idEvent),nameEvent),mailInfo);
     }
 
     @CrossOrigin
     @RequestMapping( value = "/userEvents/{username}", method = RequestMethod.GET)
     public List<Event> getUserListEvent(@PathVariable String username){
         return eventService.getUserListEvent(username);
-    }
-
-    @CrossOrigin
-    @RequestMapping( value = "/userEmailsEvents/{username}/{idEvent}.{nameEvent}", method = RequestMethod.GET)
-    public List<String> getEmailUsersOfEvent(@PathVariable String username,@PathVariable String idEvent,@PathVariable String nameEvent){
-        return eventService.getEmailUsersOfEvent(username,new EventId(Integer.parseInt(idEvent),nameEvent));
     }
 }
