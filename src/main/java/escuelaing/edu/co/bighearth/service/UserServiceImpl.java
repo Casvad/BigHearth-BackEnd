@@ -30,19 +30,7 @@ public class UserServiceImpl implements UserService{
         users.add(new Organization("microsoft2997", pass, "microsoft@hotmail.com","California","Sillicon Valley","","",new ArrayList<String>(),0, new ArrayList<Event>(), "Microsoft-Inc","Microsoft eu",1234,"https://www.w3schools.com/w3css/img_lights.jpg"));
     }
 
-    /**
-     * Search a specific user in global list
-     * @param username
-     * @return Return the user with the username 
-     */
-    private User searchUserName(String username){
-        for (User us : users) {
-            if(us.getUsername().equals(username)){
-                return us;
-            }
-        }
-        return null;
-    }
+ 
 
     @Override
     public List<User> getUsers() {
@@ -67,7 +55,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public User editConfigUser(User modUser) throws ServicesException {
         synchronized (this.users){
-            User findUser = searchUserName(modUser.getUsername());
+            User findUser = this.getUser(modUser.getUsername());
             if( findUser == null){
                 throw new ServicesException("No se encuentra el usuario para modificar su perfil");
             }else{

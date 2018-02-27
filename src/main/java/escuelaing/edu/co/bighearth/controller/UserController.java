@@ -87,6 +87,12 @@ public class UserController
     }
 
     @CrossOrigin
+    @RequestMapping( value = "/userByUserName/{username}", method = RequestMethod.GET)
+    public List<User> getUser(@PathVariable String username){
+        return userService.getUser(username);
+    }
+
+    @CrossOrigin
     @RequestMapping( value = "/modifyProfileVol", method = RequestMethod.PUT)
     public User modifyProfileVolunteer(@RequestBody Volunteer modUser){
         try{
