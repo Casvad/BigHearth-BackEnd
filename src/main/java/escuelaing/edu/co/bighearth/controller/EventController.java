@@ -27,8 +27,8 @@ public class EventController {
 
     @CrossOrigin
     @RequestMapping(method = RequestMethod.POST )
-    public Event createEvent(@RequestBody Event event){
-        return eventService.createEvent(event);
+    public Event createEvent(@RequestBody Event event,String organitation){
+        return eventService.createEvent(event,organitation);
     }
 
     @CrossOrigin
@@ -48,5 +48,11 @@ public class EventController {
     @RequestMapping( value = "/userEvents/{username}", method = RequestMethod.GET)
     public List<Event> getUserListEvent(@PathVariable String username){
         return eventService.getUserListEvent(username);
+    }
+
+    @CrossOrigin
+    @RequestMapping( value = "/userEmailsEvents/{username}/{idEvent}.{nameEvent}", method = RequestMethod.GET)
+    public List<String> getEmailUsersOfEvent(@PathVariable String username,@PathVariable String idEvent,@PathVariable String nameEvent){
+        return eventService.getEmailUsersOfEvent(username,new EventId(Integer.parseInt(idEvent),nameEvent));
     }
 }

@@ -12,9 +12,11 @@ public interface EventService {
 
     Event getEventById( EventId eventid );
 
-    Event createEvent(Event event);
+    Event createEvent(Event event,String organitation);
 
     List<Event> getUserListEvent(String username);
     
     boolean sendMailEvent(List<String> emails,List<String> mailInfo);
+
+    List<String> getEmailUsersOfEvent(String username, EventId eventId);
 }

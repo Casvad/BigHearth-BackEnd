@@ -25,4 +25,10 @@ public class EventId {
     public String getName() {
         return name;
     }
+
+    public Boolean sameEventId(EventId event){
+        Boolean itSame =false;
+        if (this.id==event.getId() && this.name.equals(event.getName())) itSame=true;
+        return itSame;
+    }
 }

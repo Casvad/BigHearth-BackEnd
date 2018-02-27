@@ -70,11 +70,12 @@ public class EventServiceImpl implements EventService{
     }
 
     @Override
-    public Event createEvent( Event event ) {
+    public Event createEvent( Event event ,String  organitation ) {
             int provisionalId =events.get(events.size()-1).getEventId().getId()+1;
             event.setEventId(new EventId(provisionalId,event.getEventId().getName()));
             for(Event e: events){
                 if(!(e.getEventId().getId()==event.getEventId().getId() &&e.getEventId().getName()==event.getEventId().getName())){
+                    userService.getUser(organitation).addEventList(event);
                     events.add(event);
                 }
             }
@@ -90,6 +91,20 @@ public class EventServiceImpl implements EventService{
     @Override
     public boolean sendMailEvent(List<String> emails, List<String> mailInfo) {
         return Mail.sendEmail(emails,mailInfo);
+    }
+
+    @Override
+    public List<String> getEmailUsersOfEvent(String username, EventId eventId) {
+        List<Event> evorgani=userService.getUser(username).getEventRegistered();
+        List<String> emails= new ArrayList<>();
+        for (Event e: evorgani){
+            if(e.getEventId().sameEventId(eventId)){
+                for(String volunteer: e.getVolunteers()){
+                    emails.add(userService.getUser(volunteer).getMail());
+                }
+            }
+        }
+        return emails;
     }
 
 
