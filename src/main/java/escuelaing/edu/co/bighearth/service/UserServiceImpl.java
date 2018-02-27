@@ -77,6 +77,7 @@ public class UserServiceImpl implements UserService{
                 findUser.setCity(modUser.getCity());
                 findUser.setPassword(modUser.getPassword());
                 findUser.setDescription(modUser.getDescription());
+                findUser.setImage(modUser.getImage());
                 if(findUser instanceof Volunteer){
                     ((Volunteer)findUser).setName(((Volunteer)modUser).getName());
                     ((Volunteer)findUser).setLastname(((Volunteer)modUser).getLastname());

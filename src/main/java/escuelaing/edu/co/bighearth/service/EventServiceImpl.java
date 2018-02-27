@@ -57,8 +57,6 @@ public class EventServiceImpl implements EventService{
     @Override
     public Event getEventById( EventId eventId ) {
         Event event=new Event();
-        System.out.println(eventId.getName());
-        System.out.println(eventId.getId());
         for(int i = 0;i < events.size();i++){
             System.out.println(events.get(i).getEventId().getId());
             System.out.println(events.get(i).getEventId().getName());

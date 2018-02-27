@@ -74,6 +74,13 @@ public class UserController
     }
 
     @CrossOrigin
+    @RequestMapping( value = "/volunteer", method = RequestMethod.GET)
+    public Volunteer volunteer(){
+        return (Volunteer)userService.getUsers().get(0);
+    }
+
+
+    @CrossOrigin
     @RequestMapping( value = "/users", method = RequestMethod.GET)
     public List<User> volunteers(){
         return userService.getUsers();

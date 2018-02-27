@@ -42,15 +42,6 @@ public class Event {
         this.eventId = eventId;
     }
 
-
-    public String getType() {
-        return eventType;
-    }
-
-    public void setType(String eventType) {
-        this.eventType = eventType;
-    }
-
     public String getDescription() {
         return description;
     }
