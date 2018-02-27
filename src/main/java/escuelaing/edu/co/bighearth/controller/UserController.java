@@ -61,11 +61,16 @@ public class UserController
         {
             throw new ServletException( "Invalid login. Please check your name and password." );
         }
-
-        jwtToken = Jwts.builder().setSubject( username ).claim( "roles", "user" ).setIssuedAt( new Date() ).signWith(
-            SignatureAlgorithm.HS256, "secretkey" ).compact();
-
-        return new Token( jwtToken );
+        String roltemp="";
+        if(user instanceof Volunteer){
+            roltemp="Volunteer";
+            jwtToken = Jwts.builder().setSubject( username ).claim( "roles", "volunteer" ).setIssuedAt( new Date() ).signWith(SignatureAlgorithm.HS256, "secretkey" ).compact();
+        }
+        else{
+            roltemp="organitation";
+            jwtToken = Jwts.builder().setSubject( username ).claim( "roles", "organitation" ).setIssuedAt( new Date() ).signWith(SignatureAlgorithm.HS256, "secretkey" ).compact();
+        }
+        return new Token( jwtToken ,roltemp);
     }
 
     @CrossOrigin
@@ -99,11 +104,13 @@ public class UserController
     {
 
         private String access_token;
+        private String rol;
 
 
-        public Token( String access_token )
+        public Token( String access_token ,String rol)
         {
             this.access_token = access_token;
+            this.rol=rol;
         }
 
 
@@ -115,6 +122,16 @@ public class UserController
         public void setAccessToken( String access_token )
         {
             this.access_token = access_token;
+        }
+
+         public String getrol()
+        {
+            return rol;
+        }
+
+        public void setrol( String rol )
+        {
+            this.rol = rol;
         }
     }
 
