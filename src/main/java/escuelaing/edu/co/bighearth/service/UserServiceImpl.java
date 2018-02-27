@@ -74,7 +74,10 @@ public class UserServiceImpl implements UserService{
                 findUser.setMail(modUser.getMail());
                 findUser.setState(modUser.getState());
                 findUser.setCity(modUser.getCity());
-                findUser.setPassword(modUser.getPassword());
+                try{
+                    findUser.setPassword(SHA1.generateHash(modUser.getPassword()));
+                }catch(Exception e){}
+
                 findUser.setDescription(modUser.getDescription());
                 if(findUser instanceof Volunteer){
                     ((Volunteer)findUser).setName(((Volunteer)modUser).getName());

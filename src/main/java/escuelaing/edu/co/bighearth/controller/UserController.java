@@ -61,16 +61,19 @@ public class UserController
         return new Token( jwtToken );
     }
 
-    @RequestMapping( value = "/users", method = RequestMethod.GET)
+    @CrossOrigin
+    @RequestMapping( method = RequestMethod.GET)
     public List<User> volunteers(){
         return userService.getUsers();
     }
 
+    @CrossOrigin
     @RequestMapping( value = "/volunteer", method = RequestMethod.GET)
     public Volunteer volunteer(){
         return (Volunteer)userService.getUsers().get(0);
     }
 
+    @CrossOrigin
     @RequestMapping( value = "/modifyProfileVol", method = RequestMethod.PUT)
     public User modifyProfileVolunteer(@RequestBody Volunteer modUser){
         try{
@@ -80,6 +83,7 @@ public class UserController
         }
     }
 
+    @CrossOrigin
     @RequestMapping( value = "/modifyProfileOrg", method = RequestMethod.PUT)
     public User modifyProfileOrganization(@RequestBody Organization modUser){
         try{

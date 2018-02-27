@@ -16,11 +16,13 @@ public class EventController {
     @Autowired
     private EventService eventService;
 
+    @CrossOrigin
     @RequestMapping( method = RequestMethod.GET)
     public List<Event> getEvents(){
         return eventService.getEvents();
     }
 
+    @CrossOrigin
     @RequestMapping( value = "/{idEvent}", method = RequestMethod.GET)
     public Event getEventById(@PathVariable int idEvent){
         return eventService.get(idEvent);
@@ -32,11 +34,13 @@ public class EventController {
         return eventService.create(event);
     }
 
+    @CrossOrigin
     @RequestMapping( value = "/userEvents/{username}", method = RequestMethod.GET)
     public List<Event> volunteers(@PathVariable String username){
         return eventService.getUserListEvent(username);
     }
 
+    @CrossOrigin
     @RequestMapping( value = "/leave/{idEvent}", method = RequestMethod.PUT)
     public List<Event> volunteers(@PathVariable int idEvent, @RequestBody Volunteer volunteer){
         eventService.leaveEventUser(idEvent,volunteer);
