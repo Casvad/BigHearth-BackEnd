@@ -32,18 +32,19 @@ public class EventServiceImpl implements EventService{
         ArrayList<String> voluntieers4 = new ArrayList<>();
         String blop = "https://78.media.tumblr.com/1fb1cfbe837fa1e2894e89143cd5d4a5/tumblr_ozne1faCKB1td5qjgo1_500.gif";
         Localitation localitation= new Localitation(4.6685,-74.0913);
+
         events.add(new Event( new EventId(0,"Asistencia a la mujer y la infancia"),20 , "COMUNITARIO",
         "Necesitamos profesor de inglés para impartir curso básico a las madres que acuden a la fundación, el curso está enfocado "+
-        "para su mejora formativa y laboral, tiene una duración de una hora y se imparte solo un día a la semana.", new Date(2018),blop,voluntieers1,"Microsoft-Inc"),localitation);
+        "para su mejora formativa y laboral, tiene una duración de una hora y se imparte solo un día a la semana.", new Date(2018),blop,voluntieers1,"Microsoft-Inc",localitation));
         events.add( new Event( new EventId(1, "Refuerzo escolar en ies") , 50 , "EDUCATIVO",
         "Se necesitan voluntarios para impartir clases de repaso escolar, a menores en riesgo de exclusión social de 12 a 18 años, "+
-        "para su mejora formativa y laboral, tiene una duración de una hora y se imparte solo un día a la semana.", new Date(2018),blop,voluntieers2,"Microsoft-Inc"),localitation);
+        "para su mejora formativa y laboral, tiene una duración de una hora y se imparte solo un día a la semana.", new Date(2018),blop,voluntieers2,"Microsoft-Inc",localitation));
         events.add( new Event( new EventId(2, "Voluntarios para proyecto en línea en madrid") , 30 , "EDUCATIVO",
         "Se necesitan personas voluntarias para tutorías individualizadas, a niños y niñas preadolescentes  "+
-        "con problemas de integración familiar, escolar y social.", new Date(2018), blop,voluntieers3,"Microsoft-Inc"),localitation);
+        "con problemas de integración familiar, escolar y social.", new Date(2018), blop,voluntieers3,"Microsoft-Inc",localitation));
         events.add( new Event( new EventId(3,"Acompañamiento en residencias de la tercera edad") , 100 , "OCIO Y TIEMPO LIBRE",
         "Necesitamos voluntari@s que se ofrezcan para hacerle un poquito de compañía a una señora que está en una Residencia de la tercera edad ",
-        new Date(2018), blop,voluntieers4,"Microsoft-Inc"),localitation);
+        new Date(2018), blop,voluntieers4,"Microsoft-Inc",localitation));
 
         userService.getUser("carlos.ramirez-ot").addEventList(events.get(0));
         userService.getUser("carlos.ramirez-ot").addEventList(events.get(1));

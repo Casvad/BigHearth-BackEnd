@@ -96,6 +96,7 @@ public class Event {
 
     public void setOrganization(String organization){
         this.organization=organization;
+    }
     public void setLocalitation(Localitation localitation) {
         this.localitation = localitation;
     }
@@ -107,12 +108,6 @@ public class Event {
     @Override
     public String toString() {
         return super.toString();
-    }
-
-    //Fase beta
-    public boolean addVolunteerEvent(Volunteer volunteerToRegister){
-        this.volunteers.add(volunteerToRegister.getUsername());
-        return true;
     }
 
 }
