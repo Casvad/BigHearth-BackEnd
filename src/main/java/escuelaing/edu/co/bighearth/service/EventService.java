@@ -19,4 +19,6 @@ public interface EventService {
     boolean sendMailEvent(List<String> emails,List<String> mailInfo);
 
     boolean unrolUser(int id, String username);
+
+    boolean rolUser(int id, String username);
 }
