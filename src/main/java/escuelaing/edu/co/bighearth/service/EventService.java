@@ -12,13 +12,12 @@ public interface EventService {
 
     Event getEventById( EventId eventid );
 
-    Event createEvent(Event event);
+    Event createEvent(Event event,String organitation);
 
     List<Event> getUserListEvent(String username);
-    
-    boolean sendMailEvent(List<String> emails,List<String> mailInfo);
-
     boolean unrolUser(int id, String username);
 
     boolean rolUser(int id, String username);
+    boolean sendMailEvent(EventId eventId,List<String> mailInfo);
+
 }

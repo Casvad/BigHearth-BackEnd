@@ -16,6 +16,7 @@ public class Event {
     private String description;
     private Date eventDate;
     private String image;
+    private Localitation localitation;
     private List<String> volunteers=new ArrayList<>();
     private String organization;
 
@@ -24,7 +25,7 @@ public class Event {
     }
 
 
-    public Event(EventId eventId,int maxVolunteers, String eventType, String description, Date eventDate, String image,List<String> volunteers,String organization) {
+    public Event(EventId eventId,int maxVolunteers, String eventType, String description, Date eventDate, String image,List<String> volunteers,String organization,Localitation localitation) {
 
         this.eventId = eventId;
         this.maxVolunteers=maxVolunteers;
@@ -34,6 +35,7 @@ public class Event {
         this.image = image;
         this.volunteers = volunteers;
         this.organization=organization;
+        this.localitation = localitation;
     }
 
     public EventId getEventId() {return eventId; }
@@ -94,6 +96,17 @@ public class Event {
 
     public void setOrganization(String organization){
         this.organization=organization;
+    public void setLocalitation(Localitation localitation) {
+        this.localitation = localitation;
+    }
+
+    public Localitation getLocalitation() {
+        return localitation;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 
     //Fase beta
