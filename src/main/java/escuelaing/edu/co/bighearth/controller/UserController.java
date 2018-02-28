@@ -94,6 +94,13 @@ public class UserController
         }
     }
 
+    @CrossOrigin
+    @RequestMapping(method = RequestMethod.POST )
+    public User addUser(@RequestBody User user ) {
+        return userService.createUser(user);
+    }
+
+
 
     public class Token
     {

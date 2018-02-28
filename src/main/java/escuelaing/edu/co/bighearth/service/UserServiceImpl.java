@@ -7,6 +7,7 @@ import escuelaing.edu.co.bighearth.model.User;
 import escuelaing.edu.co.bighearth.model.Volunteer;
 import escuelaing.edu.co.bighearth.security.SHA1;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.annotation.PostConstruct;
 import java.util.*;
@@ -44,11 +45,13 @@ public class UserServiceImpl implements UserService{
         return null;
     }
 
+    @CrossOrigin
     @Override
     public List<User> getUsers() {
         return users;
     }
 
+    @CrossOrigin
     @Override
     public User getUser( String username ) {
         for(User us : users){
@@ -59,11 +62,28 @@ public class UserServiceImpl implements UserService{
         return null;
     }
 
+    @CrossOrigin
+    @Override
+    public User createUser(User user) {
+        try {
+            user.setPassword(SHA1.generateHash(user.getPassword()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(users);
+        users.add(user);
+        System.out.println(users);
+        return user;
+    }
+
+
+
     /**
     *   Modify the user profile depend of the kind of user
     *   @param modUser Usuario para editar su configuración
     *   @return user with the new profile values
     */
+    @CrossOrigin
     @Override
     public User editConfigUser(User modUser) throws ServicesException {
         synchronized (this.users){
