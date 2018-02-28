@@ -67,8 +67,8 @@ public class UserController
             jwtToken = Jwts.builder().setSubject( username ).claim( "roles", "volunteer" ).setIssuedAt( new Date() ).signWith(SignatureAlgorithm.HS256, "secretkey" ).compact();
         }
         else{
-            roltemp="organitation";
-            jwtToken = Jwts.builder().setSubject( username ).claim( "roles", "organitation" ).setIssuedAt( new Date() ).signWith(SignatureAlgorithm.HS256, "secretkey" ).compact();
+            roltemp="organization";
+            jwtToken = Jwts.builder().setSubject( username ).claim( "roles", "organization" ).setIssuedAt( new Date() ).signWith(SignatureAlgorithm.HS256, "secretkey" ).compact();
         }
         return new Token( jwtToken ,roltemp);
     }

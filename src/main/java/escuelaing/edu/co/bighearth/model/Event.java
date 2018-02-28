@@ -17,14 +17,14 @@ public class Event {
     private Date eventDate;
     private String image;
     private List<String> volunteers=new ArrayList<>();
-    private String organitation;
+    private String organization;
 
     public Event(){
 
     }
 
 
-    public Event(EventId eventId,int maxVolunteers, String eventType, String description, Date eventDate, String image,List<String> volunteers,String organitation) {
+    public Event(EventId eventId,int maxVolunteers, String eventType, String description, Date eventDate, String image,List<String> volunteers,String organization) {
 
         this.eventId = eventId;
         this.maxVolunteers=maxVolunteers;
@@ -33,7 +33,7 @@ public class Event {
         this.eventDate = eventDate;
         this.image = image;
         this.volunteers = volunteers;
-        this.organitation=organitation;
+        this.organization=organization;
     }
 
     public EventId getEventId() {return eventId; }
@@ -88,12 +88,12 @@ public class Event {
         this.maxVolunteers = maxVolunteers;
     }
 
-    public String getOrganitation(){
-        return this.organitation;
+    public String getOrganization(){
+        return this.organization;
     }
 
-    public void setOrganitation(String organitation){
-        this.organitation=organitation;
+    public void setOrganization(String organization){
+        this.organization=organization;
     }
 
     //Fase beta
