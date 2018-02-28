@@ -26,8 +26,8 @@ public class EventController {
     }
 
     @CrossOrigin
-    @RequestMapping(method = RequestMethod.POST )
-    public Event createEvent(@RequestBody Event event,String organitation){
+    @RequestMapping( value = "/{organitation}",method = RequestMethod.POST )
+    public Event createEvent(@RequestBody Event event,@PathVariable String organitation){
         return eventService.createEvent(event,organitation);
     }
 
