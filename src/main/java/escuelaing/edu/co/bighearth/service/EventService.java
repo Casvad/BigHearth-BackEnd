@@ -17,4 +17,6 @@ public interface EventService {
     List<Event> getUserListEvent(String username);
     
     boolean sendMailEvent(List<String> emails,List<String> mailInfo);
+
+    boolean unrolUser(int id, String username);
 }

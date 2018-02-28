@@ -43,6 +43,9 @@ public class EventServiceImpl implements EventService{
         userService.getUser("carlos.ramirez-ot").addEventList(events.get(0));
         userService.getUser("carlos.ramirez-ot").addEventList(events.get(1));
         userService.getUser("carlos.ramirez-ot").addEventList(events.get(2));
+        userService.getUser("microsoft2997").addEventList(events.get(0));
+        userService.getUser("microsoft2997").addEventList(events.get(1));
+        userService.getUser("microsoft2997").addEventList(events.get(2));
         events.get(0).getVolunteers().add(userService.getUser("carlos.ramirez-ot").getUsername());
 
     }
@@ -82,12 +85,24 @@ public class EventServiceImpl implements EventService{
     @Override
     public List<Event> getUserListEvent(String username) {
         User findUser = userService.getUser(username);
+        System.out.println(findUser);
         return findUser!=null? findUser.getEventRegistered():new ArrayList<Event>();
     }
 
     @Override
     public boolean sendMailEvent(List<String> emails, List<String> mailInfo) {
         return Mail.sendEmail(emails,mailInfo);
+    }
+
+    @Override
+    public boolean unrolUser(int id, String username) {
+        try{
+            events.get(id).getVolunteers().remove(userService.getUser(username));
+            userService.getUser(username).getEventRegistered().remove(events.get(id));
+        }catch(Exception e) {
+            return false;
+        }
+        return true;
     }
 
 

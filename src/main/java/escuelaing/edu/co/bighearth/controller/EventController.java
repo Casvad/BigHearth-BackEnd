@@ -32,6 +32,13 @@ public class EventController {
     }
 
     @CrossOrigin
+    @RequestMapping(value="/unrol",method = RequestMethod.POST )
+    public boolean unrolUser(@RequestBody int id,@RequestBody String username){
+        System.out.println("---------------------------------------------------");
+        return eventService.unrolUser(id,username);
+    }
+
+    @CrossOrigin
     @RequestMapping( value = "/{idEvent}.{nameEvent}", method = RequestMethod.GET)
     public Event getEventById(@PathVariable String idEvent,@PathVariable String nameEvent){
         return eventService.getEventById(new EventId(Integer.parseInt(idEvent),nameEvent));
